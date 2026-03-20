@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { MOCK_MUC_TIEU } from "@/lib/mock-data";
+// Remove mock data
 import { MucTieuCard } from "@/components/muc-tieu/MucTieuCard";
 import { MucTieuForm } from "@/components/muc-tieu/MucTieuForm";
 import { NapTienDialog } from "@/components/muc-tieu/NapTienDialog";
@@ -9,13 +9,15 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Plus, Target } from "lucide-react";
 import { MucTieuTietKiem } from "@/types";
-import { toast } from "sonner";
+import { useMucTieu, useDeleteMucTieu } from "@/hooks/useMucTieu";
 
 export default function MucTieuPage() {
     const [formOpen, setFormOpen] = useState(false);
     const [editItem, setEditItem] = useState<MucTieuTietKiem | null>(null);
     const [napTienItem, setNapTienItem] = useState<MucTieuTietKiem | null>(null);
-    const [items, setItems] = useState(MOCK_MUC_TIEU);
+    
+    const { data: items = [], isLoading } = useMucTieu();
+    const deleteMT = useDeleteMucTieu();
 
     const dangThucHien = items.filter(mt => mt.trang_thai === 'dang_thuc_hien');
     const hoanThanh = items.filter(mt => mt.trang_thai === 'hoan_thanh');
@@ -25,9 +27,10 @@ export default function MucTieuPage() {
         setFormOpen(true);
     };
 
-    const handleDelete = (id: number) => {
-        setItems(prev => prev.filter(mt => mt.id !== id));
-        toast.success('Đã xoá mục tiêu!');
+    const handleDelete = async (id: number) => {
+        if (confirm('Bạn có chắc xoá mục tiêu này?')) {
+            await deleteMT.mutateAsync(id);
+        }
     };
 
     const handleCloseForm = () => {
@@ -58,8 +61,20 @@ export default function MucTieuPage() {
                 </Dialog>
             </div>
 
-            {/* Đang thực hiện */}
-            <div>
+            {isLoading ? (
+                <div className="flex justify-center p-12">
+                    <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                </div>
+            ) : items.length === 0 ? (
+                <div className="text-center py-20 text-muted-foreground">
+                    <Target className="h-12 w-12 mx-auto mb-3 opacity-20" />
+                    <p>Chưa có mục tiêu tiết kiệm nào.</p>
+                </div>
+            ) : (
+                <>
+                    {/* Đang thực hiện */}
+                    {dangThucHien.length > 0 && (
+                        <div>
                 <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">
                     <Target className="h-5 w-5 text-primary" />
                     Đang thực hiện ({dangThucHien.length})
@@ -75,9 +90,10 @@ export default function MucTieuPage() {
                         />
                     ))}
                 </div>
-            </div>
+                        </div>
+                    )}
 
-            {/* Hoàn thành */}
+                    {/* Hoàn thành */}
             {hoanThanh.length > 0 && (
                 <div>
                     <h2 className="text-lg font-semibold mb-3 text-muted-foreground">✅ Đã hoàn thành ({hoanThanh.length})</h2>
@@ -100,7 +116,9 @@ export default function MucTieuPage() {
                     open={!!napTienItem}
                     onOpenChange={(v) => !v && setNapTienItem(null)}
                     mucTieu={napTienItem}
-                />
+                    />
+                )}
+            </>
             )}
         </div>
     );

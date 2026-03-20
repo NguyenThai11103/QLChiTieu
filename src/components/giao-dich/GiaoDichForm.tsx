@@ -37,7 +37,7 @@ export function GiaoDichForm({ editItem, danhMucList, onSuccess }: GiaoDichFormP
         defaultValues: {
             loai: (editItem?.loai as LoaiGiaoDich) ?? 'chi',
             danh_muc_id: editItem?.danh_muc_id ?? 0,
-            so_tien: editItem?.so_tien ?? undefined,
+            so_tien: editItem?.so_tien ?? ('' as unknown as number),
             noi_dung: editItem?.noi_dung ?? '',
             ngay_giao_dich: editItem?.ngay_giao_dich ?? format(new Date(), 'yyyy-MM-dd'),
         },

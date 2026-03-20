@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { MOCK_NHAC_NHO } from "@/lib/mock-data";
+// Remove mock data
 import { NhacNhoForm } from "@/components/nhac-nho/NhacNhoForm";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -9,8 +9,8 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Bell, Trash2, Pencil } from "lucide-react";
 import { NhacNho, LapLaiNhacNho } from "@/types";
+import { useNhacNho, useDeleteNhacNho, useToggleNhacNho } from "@/hooks/useNhacNho";
 import { format } from "date-fns";
-import { toast } from "sonner";
 
 const lapLaiLabel: Record<LapLaiNhacNho, string> = {
     mot_lan: 'Một lần',
@@ -22,15 +22,19 @@ const lapLaiLabel: Record<LapLaiNhacNho, string> = {
 export default function NhacNhoPage() {
     const [open, setOpen] = useState(false);
     const [editItem, setEditItem] = useState<NhacNho | null>(null);
-    const [items, setItems] = useState(MOCK_NHAC_NHO);
 
-    const handleToggle = (id: number) => {
-        setItems(prev => prev.map(nn => nn.id === id ? { ...nn, trang_thai: !nn.trang_thai } : nn));
+    const { data: items = [], isLoading } = useNhacNho();
+    const deleteNN = useDeleteNhacNho();
+    const toggleNN = useToggleNhacNho();
+
+    const handleToggle = async (nn: NhacNho) => {
+        await toggleNN.mutateAsync(nn.id);
     };
 
-    const handleDelete = (id: number) => {
-        setItems(prev => prev.filter(nn => nn.id !== id));
-        toast.success('Đã xoá nhắc nhở!');
+    const handleDelete = async (id: number) => {
+        if (confirm('Bạn có chắc xoá nhắc nhở này?')) {
+            await deleteNN.mutateAsync(id);
+        }
     };
 
     const handleEdit = (nn: NhacNho) => {
@@ -69,6 +73,11 @@ export default function NhacNhoPage() {
                 </Dialog>
             </div>
 
+            {isLoading ? (
+                <div className="flex justify-center p-12">
+                    <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                </div>
+            ) : (
             <div className="space-y-3">
                 {[...batList, ...tatList].map(nn => (
                     <div key={nn.id} className="flex items-center gap-4 bg-card rounded-xl border p-4">
@@ -86,7 +95,7 @@ export default function NhacNhoPage() {
                             </div>
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
-                            <Switch checked={nn.trang_thai} onCheckedChange={() => handleToggle(nn.id)} />
+                            <Switch checked={nn.trang_thai} onCheckedChange={() => handleToggle(nn)} />
                             <Button variant="ghost" size="icon" onClick={() => handleEdit(nn)}>
                                 <Pencil className="h-4 w-4" />
                             </Button>
@@ -103,6 +112,7 @@ export default function NhacNhoPage() {
                     </div>
                 )}
             </div>
+            )}
         </div>
     );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { MOCK_GIAO_DICH, MOCK_DANH_MUC } from "@/lib/mock-data";
+// Remove mock data
 import { useFinanceStore } from "@/store/finance.store";
 import { GiaoDichList } from "@/components/giao-dich/GiaoDichList";
 import { GiaoDichForm } from "@/components/giao-dich/GiaoDichForm";
@@ -11,13 +11,18 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus } from "lucide-react";
 import { GiaoDich, LoaiGiaoDich } from "@/types";
-import { toast } from "sonner";
+import { useGiaoDich, useDeleteGiaoDich } from "@/hooks/useGiaoDich";
+import { useDanhMuc } from "@/hooks/useDanhMuc";
 
 export default function GiaoDichPage() {
-    const { activeTypeFilter, setTypeFilter } = useFinanceStore();
+    const { activeTypeFilter, setTypeFilter, selectedMonth, selectedYear } = useFinanceStore();
     const [open, setOpen] = useState(false);
     const [editItem, setEditItem] = useState<GiaoDich | null>(null);
-    const [items, setItems] = useState(MOCK_GIAO_DICH);
+
+    const { data: response, isLoading } = useGiaoDich({ thang: selectedMonth, nam: selectedYear });
+    const items = response?.data || [];
+    const { data: danhMucList = [] } = useDanhMuc();
+    const deleteGD = useDeleteGiaoDich();
 
     const filtered = activeTypeFilter
         ? items.filter(gd => gd.loai === activeTypeFilter)
@@ -28,9 +33,10 @@ export default function GiaoDichPage() {
         setOpen(true);
     };
 
-    const handleDelete = (id: number) => {
-        setItems(prev => prev.filter(gd => gd.id !== id));
-        toast.success('Đã xoá giao dịch!');
+    const handleDelete = async (id: number) => {
+        if (confirm('Bạn có chắc xoá giao dịch này?')) {
+            await deleteGD.mutateAsync(id);
+        }
     };
 
     const handleClose = () => {
@@ -60,7 +66,7 @@ export default function GiaoDichPage() {
                             </DialogHeader>
                             <GiaoDichForm
                                 editItem={editItem}
-                                danhMucList={MOCK_DANH_MUC}
+                                danhMucList={danhMucList}
                                 onSuccess={handleClose}
                             />
                         </DialogContent>
@@ -87,7 +93,7 @@ export default function GiaoDichPage() {
 
             <GiaoDichList
                 items={filtered}
-                isLoading={false}
+                isLoading={isLoading}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
             />

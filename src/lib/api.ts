@@ -1,80 +1,44 @@
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import Cookies from 'js-cookie';
 import { toast } from 'sonner';
 
+// Next.js API Routes — same origin, cookie-based auth
 const apiClient: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1',
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
+  withCredentials: true, // gửi httpOnly cookie tự động
   timeout: 15000,
 });
 
-// Interceptor for Request
+// Request interceptor (cookie gửi tự động, không cần Bearer)
 apiClient.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    // Đọc token từ Zustand persist store (nguồn chính) hoặc fallback sang Cookie
-    let token: string | null = null;
-    try {
-      const stored = localStorage.getItem('auth-storage');
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        token = parsed?.state?.token ?? null;
-      }
-    } catch {}
-    // Fallback: đọc từ Cookie (dùng khi SSR hoặc localStorage không khả dụng)
-    if (!token) {
-      token = Cookies.get('token') ?? null;
-    }
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (config: InternalAxiosRequestConfig) => config,
+  (error) => Promise.reject(error)
 );
 
-// Interceptor for Response
+// Response interceptor — unwrap { success, data }
 apiClient.interceptors.response.use(
-  (response: AxiosResponse) => {
-    // Unwrap the generic API Response so we don't have to keep doing res.data.data
-    return response.data;
-  },
+  (response: AxiosResponse) => response.data,
   (error) => {
-    // Handle 401 Unauthorized
     if (error.response?.status === 401) {
-      Cookies.remove('token');
-      Cookies.remove('user');
       if (typeof window !== 'undefined' && window.location.pathname !== '/login') {
         toast.error('Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.');
-        window.location.href = '/login';
+        // window.location.href = '/login'; // bỏ comment khi bật auth check
       }
     }
-
-    // Format error to match ApiResponse structure
-    const formattedError = error.response?.data || {
+    if (error.response?.status === 403) {
+      if (error.config?.method?.toLowerCase() !== 'get') {
+        toast.error(error.response?.data?.message || 'Không có quyền thực hiện hành động này');
+      }
+    }
+    const formatted = error.response?.data || {
       success: false,
       message: error.message || 'Có lỗi xảy ra',
     };
-
-    // Handle 403 Forbidden
-    if (error.response?.status === 403) {
-      // Chỉ hiện toast cho các hành động (POST, PUT, DELETE, PATCH)
-      // Đối với GET (load trang), chúng ta để Component tự xử lý UI Restricted
-      if (error.config?.method?.toLowerCase() !== 'get') {
-        toast.error(formattedError.message || 'Bạn không có quyền thực hiện hành động này');
-      }
-    }
-
-    // Add status code for easier handling in components
-    if (error.response) {
-      formattedError.status = error.response.status;
-    }
-
-    return Promise.reject(formattedError);
+    if (error.response) formatted.status = error.response.status;
+    return Promise.reject(formatted);
   }
 );
 

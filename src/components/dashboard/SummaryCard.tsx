@@ -1,9 +1,5 @@
 'use client';
 
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { TrendingUp, TrendingDown } from "lucide-react";
-
 interface SummaryCardProps {
     title: string;
     value: number;
@@ -13,53 +9,90 @@ interface SummaryCardProps {
     loading?: boolean;
 }
 
-const variantStyles = {
-    income: { bg: 'bg-emerald-50 dark:bg-emerald-950/20', icon: 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/40', value: 'text-emerald-600' },
-    expense: { bg: 'bg-red-50 dark:bg-red-950/20', icon: 'text-red-500 bg-red-100 dark:bg-red-900/40', value: 'text-red-500' },
-    balance: { bg: 'bg-blue-50 dark:bg-blue-950/20', icon: 'text-blue-600 bg-blue-100 dark:bg-blue-900/40', value: 'text-blue-600' },
+const variantConfig = {
+    income: {
+        gradient: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05))',
+        border: 'rgba(16,185,129,0.2)',
+        iconBg: 'linear-gradient(135deg, #10b981, #059669)',
+        iconShadow: '0 4px 14px rgba(16,185,129,0.4)',
+        value: '#10b981',
+        tag: '#10b981',
+        tagBg: 'rgba(16,185,129,0.12)',
+        label: 'THU NHẬP',
+    },
+    expense: {
+        gradient: 'linear-gradient(135deg, rgba(239,68,68,0.12), rgba(239,68,68,0.04))',
+        border: 'rgba(239,68,68,0.18)',
+        iconBg: 'linear-gradient(135deg, #ef4444, #dc2626)',
+        iconShadow: '0 4px 14px rgba(239,68,68,0.35)',
+        value: '#ef4444',
+        tag: '#ef4444',
+        tagBg: 'rgba(239,68,68,0.1)',
+        label: 'CHI TIÊU',
+    },
+    balance: {
+        gradient: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.04))',
+        border: 'rgba(245,158,11,0.2)',
+        iconBg: 'linear-gradient(135deg, #f59e0b, #d97706)',
+        iconShadow: '0 4px 14px rgba(245,158,11,0.35)',
+        value: '#f59e0b',
+        tag: '#f59e0b',
+        tagBg: 'rgba(245,158,11,0.1)',
+        label: 'SỐ DƯ',
+    },
 };
 
 export function SummaryCard({ title, value, growth, icon, variant, loading }: SummaryCardProps) {
-    const styles = variantStyles[variant];
+    const cfg = variantConfig[variant];
 
     if (loading) {
         return (
-            <Card>
-                <CardContent className="p-5">
-                    <div className="h-4 w-24 bg-muted animate-pulse rounded mb-3" />
-                    <div className="h-7 w-32 bg-muted animate-pulse rounded" />
-                </CardContent>
-            </Card>
+            <div className="rounded-2xl p-5 animate-pulse" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="h-3 w-20 rounded bg-white/10 mb-4" />
+                <div className="h-7 w-36 rounded bg-white/10" />
+            </div>
         );
     }
 
     return (
-        <Card className={cn("border-0 shadow-sm", styles.bg)}>
-            <CardContent className="p-5">
-                <div className="flex items-start justify-between">
-                    <div>
-                        <p className="text-sm font-medium text-muted-foreground">{title}</p>
-                        <p className={cn("text-2xl font-bold mt-1", styles.value)}>
-                            {value.toLocaleString('vi-VN')} ₫
-                        </p>
-                        {growth !== undefined && (
-                            <div className="flex items-center gap-1 mt-1.5">
-                                {growth >= 0 ? (
-                                    <TrendingUp className="h-3 w-3 text-emerald-500" />
-                                ) : (
-                                    <TrendingDown className="h-3 w-3 text-red-500" />
-                                )}
-                                <span className={cn("text-xs font-medium", growth >= 0 ? 'text-emerald-500' : 'text-red-500')}>
-                                    {Math.abs(growth).toFixed(1)}% so với tháng trước
-                                </span>
-                            </div>
-                        )}
-                    </div>
-                    <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center", styles.icon)}>
-                        {icon}
-                    </div>
+        <div className="rounded-2xl p-5 transition-all hover:scale-[1.01] cursor-default"
+            style={{
+                background: cfg.gradient,
+                border: `1px solid ${cfg.border}`,
+                boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
+            }}
+        >
+            <div className="flex items-start justify-between mb-4">
+                <div>
+                    <span className="text-[10px] font-bold tracking-widest" style={{ color: cfg.tag, background: cfg.tagBg, padding: '2px 8px', borderRadius: '999px' }}>
+                        {cfg.label}
+                    </span>
                 </div>
-            </CardContent>
-        </Card>
+                <div className="h-10 w-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: cfg.iconBg, boxShadow: cfg.iconShadow }}
+                >
+                    <span className="text-white">{icon}</span>
+                </div>
+            </div>
+
+            <p className="text-2xl font-black tracking-tight" style={{ color: cfg.value }}>
+                {value.toLocaleString('vi-VN')}
+                <span className="text-base font-semibold ml-1 opacity-70"> ₫</span>
+            </p>
+
+            {growth !== undefined && (
+                <div className="flex items-center gap-1.5 mt-2">
+                    <span className="text-xs font-medium px-2 py-0.5 rounded-full"
+                        style={{
+                            color: growth >= 0 ? '#10b981' : '#ef4444',
+                            background: growth >= 0 ? 'rgba(16,185,129,0.12)' : 'rgba(239,68,68,0.1)',
+                        }}
+                    >
+                        {growth >= 0 ? '↑' : '↓'} {Math.abs(growth).toFixed(1)}%
+                    </span>
+                    <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>so với tháng trước</span>
+                </div>
+            )}
+        </div>
     );
 }

@@ -1,7 +1,6 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { ThongKeTheoDanhMuc } from "@/types";
 
 interface CategoryPieChartProps {
@@ -9,69 +8,65 @@ interface CategoryPieChartProps {
     loading?: boolean;
 }
 
+const CustomTooltip = ({ active, payload }: any) => {
+    if (!active || !payload?.length) return null;
+    const d = payload[0];
+    return (
+        <div className="rounded-xl p-3 text-xs"
+            style={{ background: 'rgba(18,22,42,0.95)', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(12px)' }}
+        >
+            <p className="font-bold mb-1" style={{ color: d.payload.color }}>{d.name}</p>
+            <p style={{ color: 'var(--muted-foreground)' }}>{d.value.toLocaleString('vi-VN')} ₫</p>
+        </div>
+    );
+};
+
 export function CategoryPieChart({ data, loading }: CategoryPieChartProps) {
     const chartData = data.map(item => ({
         name: `${item.danh_muc.bieu_tuong} ${item.danh_muc.ten}`,
         value: item.tong_tien,
         color: item.danh_muc.mau_sac,
+        percent: item.ty_le_phan_tram,
     }));
 
-    if (loading) {
-        return (
-            <Card>
-                <CardHeader className="pb-2">
-                    <CardTitle className="text-base">Chi tiêu theo danh mục</CardTitle>
-                </CardHeader>
-                <CardContent className="flex items-center justify-center h-[220px]">
-                    <div className="h-32 w-32 rounded-full bg-muted animate-pulse" />
-                </CardContent>
-            </Card>
-        );
-    }
-
-    if (data.length === 0) {
-        return (
-            <Card>
-                <CardHeader className="pb-2">
-                    <CardTitle className="text-base">Chi tiêu theo danh mục</CardTitle>
-                </CardHeader>
-                <CardContent className="flex items-center justify-center h-[220px] text-muted-foreground text-sm">
-                    Chưa có dữ liệu
-                </CardContent>
-            </Card>
-        );
-    }
-
     return (
-        <Card>
-            <CardHeader className="pb-2">
-                <CardTitle className="text-base">Chi tiêu theo danh mục</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <ResponsiveContainer width="100%" height={220}>
-                    <PieChart>
-                        <Pie
-                            data={chartData}
-                            cx="50%"
-                            cy="45%"
-                            innerRadius={55}
-                            outerRadius={80}
-                            paddingAngle={3}
-                            dataKey="value"
-                        >
-                            {chartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.color} />
-                            ))}
-                        </Pie>
-                        <Tooltip formatter={(v: number) => `${v.toLocaleString('vi-VN')} ₫`} />
-                        <Legend
-                            iconType="circle"
-                            iconSize={8}
-                            formatter={(value) => <span className="text-xs">{value}</span>}
-                        />
-                    </PieChart>
-                </ResponsiveContainer>
-            </CardContent>
-        </Card>
+        <div className="rounded-2xl p-5 h-full" style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.06)', boxShadow: '0 4px 24px rgba(0,0,0,0.2)' }}>
+            <div className="mb-4">
+                <h3 className="text-sm font-bold" style={{ color: 'var(--foreground)' }}>Danh mục chi tiêu</h3>
+                <p className="text-xs mt-0.5" style={{ color: 'var(--muted-foreground)' }}>Phân bổ trong tháng</p>
+            </div>
+
+            {loading ? (
+                <div className="flex items-center justify-center h-40">
+                    <div className="h-28 w-28 rounded-full animate-pulse" style={{ background: 'rgba(255,255,255,0.06)' }} />
+                </div>
+            ) : data.length === 0 ? (
+                <div className="flex items-center justify-center h-40 text-xs" style={{ color: 'var(--muted-foreground)' }}>Chưa có dữ liệu</div>
+            ) : (
+                <>
+                    <ResponsiveContainer width="100%" height={160}>
+                        <PieChart>
+                            <Pie data={chartData} cx="50%" cy="50%" innerRadius={45} outerRadius={72} paddingAngle={3} dataKey="value">
+                                {chartData.map((entry, i) => (
+                                    <Cell key={i} fill={entry.color} />
+                                ))}
+                            </Pie>
+                            <Tooltip content={<CustomTooltip />} />
+                        </PieChart>
+                    </ResponsiveContainer>
+
+                    {/* Legend */}
+                    <div className="space-y-2 mt-3">
+                        {chartData.slice(0, 4).map((item, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                                <span className="h-2.5 w-2.5 rounded-full flex-shrink-0" style={{ background: item.color }} />
+                                <span className="text-xs flex-1 truncate" style={{ color: 'var(--muted-foreground)' }}>{item.name}</span>
+                                <span className="text-xs font-semibold" style={{ color: 'var(--foreground)' }}>{item.percent.toFixed(0)}%</span>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
     );
 }

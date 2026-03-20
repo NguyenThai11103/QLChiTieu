@@ -22,13 +22,13 @@ export default function RegisterPage() {
 
     const registerMutation = useMutation({
         mutationFn: () => authService.register({
-            ho_va_ten: hoTen,
+            ten: hoTen,
             email,
             mat_khau: password,
             mat_khau_confirmation: passwordConfirm
         }),
         onSuccess: (data) => {
-            setAuth(data.user, data.token);
+            setAuth(data);
             router.push('/');
         },
         onError: (error: any) => {
@@ -71,7 +71,7 @@ export default function RegisterPage() {
                         <div>
                             <Link href="/">
                                 <span className="text-2xl font-black tracking-tighter cursor-pointer hover:text-primary transition-colors">
-                                    SPORTSTORE
+                                    QLCHITIEU
                                 </span>
                             </Link>
                         </div>
@@ -81,7 +81,7 @@ export default function RegisterPage() {
                                 Hành Trình Mới.
                             </h2>
                             <p className="text-lg text-slate-300 font-light max-w-sm ml-auto leading-relaxed">
-                                Đăng ký ngay để nhận thông báo khuyến mãi, quản lý đơn hàng và trải nghiệm mua sắm tuyệt vời.
+                                Đăng ký ngay để bắt đầu quản lý chi tiêu thông minh, theo dõi ngân sách và kiểm soát tài chính của bạn.
                             </p>
                         </div>
                     </div>

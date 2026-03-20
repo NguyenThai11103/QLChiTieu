@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { MOCK_DANH_MUC } from "@/lib/mock-data";
+// Remove mock data
 import { DanhMucForm } from "@/components/danh-muc/DanhMucForm";
 import { DanhMucCard } from "@/components/danh-muc/DanhMucCard";
 import { Button } from "@/components/ui/button";
@@ -9,12 +9,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus } from "lucide-react";
 import { DanhMuc } from "@/types";
-import { toast } from "sonner";
+import { useDanhMuc, useDeleteDanhMuc } from "@/hooks/useDanhMuc";
 
 export default function DanhMucPage() {
     const [open, setOpen] = useState(false);
     const [editItem, setEditItem] = useState<DanhMuc | null>(null);
-    const [items, setItems] = useState(MOCK_DANH_MUC);
+    const { data: items = [], isLoading } = useDanhMuc();
+    const deleteDM = useDeleteDanhMuc();
 
     const chiList = items.filter(dm => dm.loai === 'chi');
     const thuList = items.filter(dm => dm.loai === 'thu');
@@ -24,9 +25,10 @@ export default function DanhMucPage() {
         setOpen(true);
     };
 
-    const handleDelete = (id: number) => {
-        setItems(prev => prev.filter(dm => dm.id !== id));
-        toast.success('Đã xoá danh mục!');
+    const handleDelete = async (id: number) => {
+        if (confirm('Bạn có chắc xoá danh mục này?')) {
+            await deleteDM.mutateAsync(id);
+        }
     };
 
     const handleClose = () => {
@@ -57,7 +59,12 @@ export default function DanhMucPage() {
                 </Dialog>
             </div>
 
-            <Tabs defaultValue="chi">
+            {isLoading ? (
+                <div className="flex justify-center p-12">
+                    <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                </div>
+            ) : (
+                <Tabs defaultValue="chi">
                 <TabsList>
                     <TabsTrigger value="chi">Chi tiêu ({chiList.length})</TabsTrigger>
                     <TabsTrigger value="thu">Thu nhập ({thuList.length})</TabsTrigger>
@@ -77,6 +84,7 @@ export default function DanhMucPage() {
                     </div>
                 </TabsContent>
             </Tabs>
+            )}
         </div>
     );
 }

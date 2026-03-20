@@ -38,7 +38,7 @@ export function NganSachForm({ editItem, defaultThang, defaultNam, onSuccess }: 
         resolver: zodResolver(schema),
         defaultValues: {
             danh_muc_id: editItem?.danh_muc_id ?? 0,
-            so_tien_gioi_han: editItem?.so_tien_gioi_han ?? undefined,
+            so_tien_gioi_han: editItem?.so_tien_gioi_han ?? ('' as unknown as number),
             thang: editItem?.thang ?? (defaultThang ?? now.getMonth() + 1),
             nam: editItem?.nam ?? (defaultNam ?? now.getFullYear()),
         },

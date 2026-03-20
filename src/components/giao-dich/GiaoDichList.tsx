@@ -1,10 +1,8 @@
 'use client';
 
 import { GiaoDich } from "@/types";
-import { cn } from "@/lib/utils";
 import { format, parseISO } from "date-fns";
-import { Pencil, Trash2, TrendingUp, TrendingDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Pencil, Trash2 } from "lucide-react";
 
 interface GiaoDichListProps {
     items: GiaoDich[];
@@ -16,9 +14,9 @@ interface GiaoDichListProps {
 export function GiaoDichList({ items, isLoading, onEdit, onDelete }: GiaoDichListProps) {
     if (isLoading) {
         return (
-            <div className="space-y-3">
+            <div className="space-y-2">
                 {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="h-16 bg-muted animate-pulse rounded-xl" />
+                    <div key={i} className="h-16 animate-pulse rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)' }} />
                 ))}
             </div>
         );
@@ -26,9 +24,9 @@ export function GiaoDichList({ items, isLoading, onEdit, onDelete }: GiaoDichLis
 
     if (items.length === 0) {
         return (
-            <div className="text-center py-16 text-muted-foreground">
+            <div className="text-center py-20" style={{ color: 'var(--muted-foreground)' }}>
                 <p className="text-4xl mb-3">💸</p>
-                <p>Chưa có giao dịch nào trong tháng này.</p>
+                <p className="text-sm">Chưa có giao dịch nào trong tháng này.</p>
             </div>
         );
     }
@@ -44,54 +42,76 @@ export function GiaoDichList({ items, isLoading, onEdit, onDelete }: GiaoDichLis
     return (
         <div className="space-y-6">
             {Object.entries(grouped).sort(([a], [b]) => b.localeCompare(a)).map(([date, gds]) => {
-                const dailyTotal = gds.reduce((s, gd) => gd.loai === 'thu' ? s + gd.so_tien : s - gd.so_tien, 0);
+                const dailyNet = gds.reduce((s, gd) => gd.loai === 'thu' ? s + gd.so_tien : s - gd.so_tien, 0);
                 return (
                     <div key={date}>
+                        {/* Date header */}
                         <div className="flex items-center justify-between mb-2 px-1">
-                            <span className="text-sm font-semibold text-muted-foreground">
-                                {format(parseISO(date), 'dd/MM/yyyy')}
-                            </span>
-                            <span className={cn("text-sm font-bold", dailyTotal >= 0 ? 'text-emerald-600' : 'text-red-500')}>
-                                {dailyTotal >= 0 ? '+' : ''}{dailyTotal.toLocaleString('vi-VN')} ₫
+                            <div className="flex items-center gap-2">
+                                <div className="h-0.5 w-6 rounded-full" style={{ background: 'rgba(255,255,255,0.12)' }} />
+                                <span className="text-xs font-semibold" style={{ color: 'var(--muted-foreground)' }}>
+                                    {format(parseISO(date), 'dd/MM/yyyy')}
+                                </span>
+                            </div>
+                            <span className="text-xs font-black" style={{ color: dailyNet >= 0 ? '#10b981' : '#ef4444' }}>
+                                {dailyNet >= 0 ? '+' : ''}{dailyNet.toLocaleString('vi-VN')} ₫
                             </span>
                         </div>
-                        <div className="space-y-2">
-                            {gds.map(gd => (
-                                <div key={gd.id} className="flex items-center gap-3 bg-card rounded-xl border p-3 group">
-                                    <div
-                                        className="h-10 w-10 rounded-full flex items-center justify-center text-lg flex-shrink-0"
-                                        style={{ backgroundColor: `${gd.danh_muc?.mau_sac || '#888'}20` }}
+
+                        {/* Transactions */}
+                        <div className="space-y-1.5">
+                            {gds.map(gd => {
+                                const isIncome = gd.loai === 'thu';
+                                const color = gd.danh_muc?.mau_sac || (isIncome ? '#10b981' : '#ef4444');
+                                return (
+                                    <div key={gd.id}
+                                        className="flex items-center gap-3 px-4 py-3 rounded-2xl group transition-all hover:bg-white/5 cursor-default"
+                                        style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.05)' }}
                                     >
-                                        {gd.danh_muc?.bieu_tuong || '💰'}
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium text-foreground truncate">
-                                            {gd.noi_dung || gd.danh_muc?.ten || 'Giao dịch'}
-                                        </p>
-                                        {gd.danh_muc && (
-                                            <p className="text-xs text-muted-foreground">{gd.danh_muc.ten}</p>
-                                        )}
-                                    </div>
-                                    <div className={cn("flex items-center gap-1 mr-2", gd.loai === 'thu' ? 'text-emerald-600' : 'text-red-500')}>
-                                        {gd.loai === 'thu' ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
-                                        <span className="text-sm font-bold">
-                                            {gd.loai === 'thu' ? '+' : '-'}{gd.so_tien.toLocaleString('vi-VN')} ₫
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => onEdit(gd)}>
-                                            <Pencil className="h-3.5 w-3.5" />
-                                        </Button>
-                                        <Button
-                                            variant="ghost" size="icon"
-                                            className="h-7 w-7 text-destructive hover:text-destructive"
-                                            onClick={() => onDelete(gd.id)}
+                                        {/* Category icon */}
+                                        <div className="h-10 w-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
+                                            style={{ background: `${color}18`, border: `1px solid ${color}25` }}
                                         >
-                                            <Trash2 className="h-3.5 w-3.5" />
-                                        </Button>
+                                            {gd.danh_muc?.bieu_tuong || '💰'}
+                                        </div>
+
+                                        {/* Info */}
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-sm font-semibold truncate" style={{ color: 'var(--foreground)' }}>
+                                                {gd.noi_dung || gd.danh_muc?.ten || 'Giao dịch'}
+                                            </p>
+                                            {gd.danh_muc && (
+                                                <p className="text-xs mt-0.5" style={{ color: 'var(--muted-foreground)' }}>{gd.danh_muc.ten}</p>
+                                            )}
+                                        </div>
+
+                                        {/* Amount */}
+                                        <div className="text-right mr-2 flex-shrink-0">
+                                            <p className="text-sm font-black" style={{ color: isIncome ? '#10b981' : '#ef4444' }}>
+                                                {isIncome ? '+' : '-'}{gd.so_tien.toLocaleString('vi-VN')} ₫
+                                            </p>
+                                        </div>
+
+                                        {/* Actions (hover) */}
+                                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                                            <button
+                                                onClick={() => onEdit(gd)}
+                                                className="h-7 w-7 rounded-lg flex items-center justify-center transition-all hover:bg-white/10"
+                                                style={{ color: 'var(--muted-foreground)' }}
+                                            >
+                                                <Pencil className="h-3.5 w-3.5" />
+                                            </button>
+                                            <button
+                                                onClick={() => onDelete(gd.id)}
+                                                className="h-7 w-7 rounded-lg flex items-center justify-center transition-all hover:bg-red-500/20 hover:text-red-400"
+                                                style={{ color: 'var(--muted-foreground)' }}
+                                            >
+                                                <Trash2 className="h-3.5 w-3.5" />
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 );

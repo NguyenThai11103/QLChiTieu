@@ -62,10 +62,7 @@ export interface RegisterRequest {
     so_dien_thoai?: string
 }
 
-export interface AuthResponse {
-    user: User
-    token: string
-}
+export type AuthResponse = User;
 
 // ============================================================
 // DanhMuc Types — match BE danh_muc table

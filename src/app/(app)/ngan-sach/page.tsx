@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { MOCK_NGAN_SACH } from "@/lib/mock-data";
-import { MOCK_DANH_MUC } from "@/lib/mock-data";
+// Remove mock data
 import { NganSachCard } from "@/components/ngan-sach/NganSachCard";
 import { NganSachForm } from "@/components/ngan-sach/NganSachForm";
 import { MonthYearPicker } from "@/components/common/MonthYearPicker";
@@ -10,14 +9,16 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import { NganSach } from "@/types";
-import { toast } from "sonner";
+import { useNganSach, useDeleteNganSach } from "@/hooks/useNganSach";
 import { useFinanceStore } from "@/store/finance.store";
 
 export default function NganSachPage() {
     const [open, setOpen] = useState(false);
     const [editItem, setEditItem] = useState<NganSach | null>(null);
-    const [items, setItems] = useState(MOCK_NGAN_SACH);
     const { selectedMonth, selectedYear } = useFinanceStore();
+
+    const { data: items = [], isLoading } = useNganSach(selectedMonth, selectedYear);
+    const deleteNS = useDeleteNganSach();
 
     const tongGioiHan = items.reduce((s, ns) => s + ns.so_tien_gioi_han, 0);
     const tongDaSuDung = items.reduce((s, ns) => s + ns.da_su_dung, 0);
@@ -27,9 +28,10 @@ export default function NganSachPage() {
         setOpen(true);
     };
 
-    const handleDelete = (id: number) => {
-        setItems(prev => prev.filter(ns => ns.id !== id));
-        toast.success('Đã xoá ngân sách!');
+    const handleDelete = async (id: number) => {
+        if (confirm('Bạn có chắc xoá ngân sách này?')) {
+            await deleteNS.mutateAsync(id);
+        }
     };
 
     const handleClose = () => {
@@ -84,11 +86,21 @@ export default function NganSachPage() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {items.map(ns => (
-                    <NganSachCard key={ns.id} nganSach={ns} onEdit={handleEdit} onDelete={handleDelete} />
-                ))}
-            </div>
+            {isLoading ? (
+                <div className="flex justify-center p-12">
+                    <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                </div>
+            ) : items.length === 0 ? (
+                <div className="text-center py-20" style={{ color: 'var(--muted-foreground)' }}>
+                    <p className="text-sm">Chưa có ngân sách nào cho tháng này.</p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {items.map(ns => (
+                        <NganSachCard key={ns.id} nganSach={ns} onEdit={handleEdit} onDelete={handleDelete} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

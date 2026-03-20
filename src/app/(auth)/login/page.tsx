@@ -21,8 +21,8 @@ export default function LoginPage() {
     const loginMutation = useMutation({
         mutationFn: () => authService.login({ email, mat_khau: password }),
         onSuccess: (data) => {
-            setAuth(data.user, data.token);
-            if (data.user.vai_tro === 'quan_tri') {
+            setAuth(data);
+            if (data.vai_tro === 'quan_tri') {
                 router.push('/admin');
             } else {
                 router.push('/');
@@ -65,7 +65,7 @@ export default function LoginPage() {
                         <div>
                             <Link href="/">
                                 <span className="text-2xl font-black tracking-tighter cursor-pointer hover:text-primary transition-colors">
-                                    SPORTSTORE
+                                    QLCHITIEU
                                 </span>
                             </Link>
                         </div>
@@ -75,7 +75,7 @@ export default function LoginPage() {
                                 Khởi Đầu Mới.
                             </h2>
                             <p className="text-lg text-slate-300 font-light max-w-sm leading-relaxed">
-                                Nâng tầm phong cách thể thao của bạn. Đăng nhập để nhận ưu đãi và mua sắm dễ dàng hơn.
+                                Đăng nhập để theo dõi chi tiêu, quản lý ngân sách và kiểm soát tài chính của bạn.
                             </p>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ export default function LoginPage() {
                             <div className="flex-1 h-px bg-slate-200" />
                         </div>
 
-                        <GoogleLoginButton />
+                        {/* <GoogleLoginButton /> */}
 
                         <div className="text-center text-sm text-slate-600">
                             Bạn chưa có tài khoản?{' '}
@@ -168,6 +168,7 @@ export default function LoginPage() {
     );
 }
 
+/*
 function GoogleLoginButton() {
     const [loading, setLoading] = useState(false);
 
@@ -205,3 +206,4 @@ function GoogleLoginButton() {
         </button>
     );
 }
+*/
