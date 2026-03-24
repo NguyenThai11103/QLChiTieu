@@ -20,8 +20,8 @@ export default function NganSachPage() {
     const { data: items = [], isLoading } = useNganSach(selectedMonth, selectedYear);
     const deleteNS = useDeleteNganSach();
 
-    const tongGioiHan = items.reduce((s, ns) => s + ns.so_tien_gioi_han, 0);
-    const tongDaSuDung = items.reduce((s, ns) => s + ns.da_su_dung, 0);
+    const tongGioiHan = items.reduce((s, ns) => s + Number(ns.so_tien_ngan_sach || 0), 0);
+    const tongDaSuDung = items.reduce((s, ns) => s + Number(ns.da_su_dung || 0), 0);
 
     const handleEdit = (ns: NganSach) => {
         setEditItem(ns);
@@ -62,7 +62,6 @@ export default function NganSachPage() {
                             <NganSachForm
                                 editItem={editItem}
                                 defaultThang={selectedMonth}
-                                defaultNam={selectedYear}
                                 onSuccess={handleClose}
                             />
                         </DialogContent>

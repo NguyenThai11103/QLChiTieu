@@ -19,8 +19,7 @@ export default function GiaoDichPage() {
     const [open, setOpen] = useState(false);
     const [editItem, setEditItem] = useState<GiaoDich | null>(null);
 
-    const { data: response, isLoading } = useGiaoDich({ thang: selectedMonth, nam: selectedYear });
-    const items = response?.data || [];
+    const { data: items = [], isLoading } = useGiaoDich({ thang: selectedMonth, nam: selectedYear });
     const { data: danhMucList = [] } = useDanhMuc();
     const deleteGD = useDeleteGiaoDich();
 

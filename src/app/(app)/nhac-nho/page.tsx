@@ -1,23 +1,12 @@
 'use client';
 
 import { useState } from "react";
-// Remove mock data
 import { NhacNhoForm } from "@/components/nhac-nho/NhacNhoForm";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Plus, Bell, Trash2, Pencil } from "lucide-react";
-import { NhacNho, LapLaiNhacNho } from "@/types";
-import { useNhacNho, useDeleteNhacNho, useToggleNhacNho } from "@/hooks/useNhacNho";
-import { format } from "date-fns";
-
-const lapLaiLabel: Record<LapLaiNhacNho, string> = {
-    mot_lan: 'Một lần',
-    hang_ngay: 'Hàng ngày',
-    hang_tuan: 'Hàng tuần',
-    hang_thang: 'Hàng tháng',
-};
+import { Bell, Trash2, Pencil, Plus } from "lucide-react";
+import { NhacNho } from "@/types";
+import { useNhacNho, useDeleteNhacNho } from "@/hooks/useNhacNho";
 
 export default function NhacNhoPage() {
     const [open, setOpen] = useState(false);
@@ -25,11 +14,6 @@ export default function NhacNhoPage() {
 
     const { data: items = [], isLoading } = useNhacNho();
     const deleteNN = useDeleteNhacNho();
-    const toggleNN = useToggleNhacNho();
-
-    const handleToggle = async (nn: NhacNho) => {
-        await toggleNN.mutateAsync(nn.id);
-    };
 
     const handleDelete = async (id: number) => {
         if (confirm('Bạn có chắc xoá nhắc nhở này?')) {
@@ -47,15 +31,12 @@ export default function NhacNhoPage() {
         setEditItem(null);
     };
 
-    const batList = items.filter(nn => nn.trang_thai);
-    const tatList = items.filter(nn => !nn.trang_thai);
-
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold">Nhắc Nhở</h1>
-                    <p className="text-muted-foreground text-sm">Đừng quên các khoản chi định kỳ</p>
+                    <p className="text-muted-foreground text-sm">Danh sách các khoản cần thanh toán định kỳ</p>
                 </div>
                 <Dialog open={open} onOpenChange={(v) => { if (!v) handleClose(); else setOpen(true); }}>
                     <DialogTrigger asChild>
@@ -79,23 +60,16 @@ export default function NhacNhoPage() {
                 </div>
             ) : (
             <div className="space-y-3">
-                {[...batList, ...tatList].map(nn => (
+                {items.map(nn => (
                     <div key={nn.id} className="flex items-center gap-4 bg-card rounded-xl border p-4">
-                        <div className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${nn.trang_thai ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                        <div className="h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 bg-primary/10 text-primary">
                             <Bell className="h-5 w-5" />
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="font-semibold text-foreground truncate">{nn.tieu_de}</p>
-                            <div className="flex items-center gap-2 mt-1">
-                                <span className="text-xs text-muted-foreground">
-                                    {format(new Date(nn.ngay_nhac), 'dd/MM/yyyy')}
-                                    {nn.gio_nhac ? ` - ${nn.gio_nhac}` : ''}
-                                </span>
-                                <Badge variant="secondary" className="text-xs">{lapLaiLabel[nn.lap_lai]}</Badge>
-                            </div>
+                            <p className="text-xs text-muted-foreground mt-1">Số tiền: {Number(nn.so_tien).toLocaleString('vi-VN')} ₫</p>
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
-                            <Switch checked={nn.trang_thai} onCheckedChange={() => handleToggle(nn)} />
                             <Button variant="ghost" size="icon" onClick={() => handleEdit(nn)}>
                                 <Pencil className="h-4 w-4" />
                             </Button>

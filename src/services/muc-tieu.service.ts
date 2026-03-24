@@ -1,10 +1,10 @@
 import apiClient from '@/lib/api';
-import { MucTieuTietKiem, CreateMucTieuRequest, NapTienRequest } from '@/types';
+import { MucTieuTietKiem, CreateMucTieuRequest } from '@/types';
 
 export const mucTieuService = {
-    getAll: async (): Promise<MucTieuTietKiem[]> => {
+    getAll: async (params: any = {}): Promise<MucTieuTietKiem[]> => {
         try {
-            const response: any = await apiClient.get('/muc-tieu');
+            const response: any = await apiClient.get('/muc-tieu/data', { params });
             return response.data || [];
         } catch (error) {
             console.error('Failed to fetch muc tieu:', error);
@@ -15,7 +15,7 @@ export const mucTieuService = {
     getById: async (id: number): Promise<MucTieuTietKiem> => {
         try {
             const response: any = await apiClient.get(`/muc-tieu/${id}`);
-            return response.data;
+            return response.data || response;
         } catch (error) {
             console.error(`Failed to fetch muc tieu ${id}:`, error);
             throw error;
@@ -24,8 +24,8 @@ export const mucTieuService = {
 
     create: async (data: CreateMucTieuRequest): Promise<MucTieuTietKiem> => {
         try {
-            const response: any = await apiClient.post('/muc-tieu', data);
-            return response.data;
+            const response: any = await apiClient.post('/muc-tieu/create', data);
+            return response.data || response;
         } catch (error) {
             console.error('Failed to create muc tieu:', error);
             throw error;
@@ -34,29 +34,29 @@ export const mucTieuService = {
 
     update: async (id: number, data: Partial<CreateMucTieuRequest>): Promise<MucTieuTietKiem> => {
         try {
-            const response: any = await apiClient.put(`/muc-tieu/${id}`, data);
-            return response.data;
+            const response: any = await apiClient.post(`/muc-tieu/update`, { id, ...data });
+            return response.data || response;
         } catch (error) {
             console.error(`Failed to update muc tieu ${id}:`, error);
             throw error;
         }
     },
 
-    napTien: async (id: number, data: NapTienRequest): Promise<MucTieuTietKiem> => {
+    remove: async (id: number): Promise<void> => {
         try {
-            const response: any = await apiClient.post(`/muc-tieu/${id}/nap-tien`, data);
-            return response.data;
+            await apiClient.post(`/muc-tieu/delete`, { id });
         } catch (error) {
-            console.error(`Failed to nap tien for muc tieu ${id}:`, error);
+            console.error(`Failed to delete muc tieu ${id}:`, error);
             throw error;
         }
     },
 
-    remove: async (id: number): Promise<void> => {
+    napTien: async (id: number, data: any): Promise<MucTieuTietKiem> => {
         try {
-            await apiClient.delete(`/muc-tieu/${id}`);
+            const response: any = await apiClient.post(`/muc-tieu/nap-tien`, { id, ...data });
+            return response.data || response;
         } catch (error) {
-            console.error(`Failed to delete muc tieu ${id}:`, error);
+            console.error(`Failed to nap tien ${id}:`, error);
             throw error;
         }
     },

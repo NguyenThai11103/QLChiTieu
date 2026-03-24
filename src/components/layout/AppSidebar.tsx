@@ -121,11 +121,11 @@ export function AppSidebar({ className, setOpen }: AppSidebarProps) {
                     <div className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
                         style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white' }}
                     >
-                        {user?.ho_va_ten?.charAt(0) || 'U'}
+                        {user?.ho_ten?.charAt(0) || 'U'}
                     </div>
                     <div className="flex-1 min-w-0">
                         <p className="text-xs font-semibold truncate" style={{ color: 'var(--foreground)' }}>
-                            {user?.ho_va_ten || 'Người dùng'}
+                            {user?.ho_ten || 'Người dùng'}
                         </p>
                         <p className="text-xs truncate" style={{ color: 'var(--muted-foreground)' }}>
                             {user?.email || 'demo@example.com'}

@@ -6,7 +6,6 @@ import { z } from "zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useNapTien } from "@/hooks/useMucTieu";
 import { MucTieuTietKiem } from "@/types";
@@ -14,7 +13,6 @@ import { Progress } from "@/components/ui/progress";
 
 const schema = z.object({
     so_tien: z.coerce.number().min(1000, 'Tối thiểu 1.000đ'),
-    ghi_chu: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -29,8 +27,8 @@ export function NapTienDialog({ open, onOpenChange, mucTieu }: NapTienDialogProp
     const napTien = useNapTien();
 
     const form = useForm<FormData>({
-        resolver: zodResolver(schema),
-        defaultValues: { so_tien: undefined, ghi_chu: '' },
+        resolver: zodResolver(schema) as any,
+        defaultValues: { so_tien: 0 },
     });
 
     const onSubmit = async (data: FormData) => {
@@ -39,24 +37,26 @@ export function NapTienDialog({ open, onOpenChange, mucTieu }: NapTienDialogProp
         form.reset();
     };
 
-    const percent = Math.min(mucTieu.phan_tram_hoan_thanh, 100);
+    const soTienHT = mucTieu.so_tien_hien_tai || 0;
+    const soTienMT = mucTieu.so_tien_muc_tieu || 1;
+    const percent = Math.min((soTienHT / soTienMT) * 100, 100) || 0;
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-sm">
                 <DialogHeader>
-                    <DialogTitle>Nạp tiền — {mucTieu.ten}</DialogTitle>
+                    <DialogTitle>Nạp tiền — {mucTieu.ten_muc_tieu}</DialogTitle>
                 </DialogHeader>
 
                 <div className="space-y-2 bg-muted/50 rounded-lg p-3">
                     <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Hiện có:</span>
-                        <span className="font-semibold">{mucTieu.so_tien_hien_tai.toLocaleString('vi-VN')} ₫</span>
+                        <span className="font-semibold">{soTienHT.toLocaleString('vi-VN')} ₫</span>
                     </div>
                     <Progress value={percent} className="h-2" />
                     <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Mục tiêu:</span>
-                        <span className="font-semibold">{mucTieu.so_tien_muc_tieu.toLocaleString('vi-VN')} ₫</span>
+                        <span className="font-semibold">{Number(mucTieu.so_tien_muc_tieu).toLocaleString('vi-VN')} ₫</span>
                     </div>
                 </div>
 
@@ -66,14 +66,6 @@ export function NapTienDialog({ open, onOpenChange, mucTieu }: NapTienDialogProp
                             <FormItem>
                                 <FormLabel>Số tiền nạp (₫)</FormLabel>
                                 <FormControl><Input type="number" placeholder="0" min={1000} step={10000} {...field} /></FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )} />
-
-                        <FormField control={form.control} name="ghi_chu" render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Ghi chú</FormLabel>
-                                <FormControl><Textarea placeholder="Tháng lương, tiết kiệm..." rows={2} {...field} /></FormControl>
                                 <FormMessage />
                             </FormItem>
                         )} />

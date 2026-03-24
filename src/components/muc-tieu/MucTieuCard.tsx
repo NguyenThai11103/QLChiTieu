@@ -1,8 +1,7 @@
 'use client';
 
 import { MucTieuTietKiem } from "@/types";
-import { Pencil, Trash2, Plus, Trophy, Calendar } from "lucide-react";
-import { format, parseISO } from "date-fns";
+import { Pencil, Trash2, Plus, Trophy } from "lucide-react";
 
 interface MucTieuCardProps {
     mucTieu: MucTieuTietKiem;
@@ -12,8 +11,10 @@ interface MucTieuCardProps {
 }
 
 export function MucTieuCard({ mucTieu, onEdit, onDelete, onNapTien }: MucTieuCardProps) {
-    const percent = Math.min(mucTieu.phan_tram_hoan_thanh, 100);
-    const isComplete = mucTieu.trang_thai === 'hoan_thanh';
+    const soTienHT = mucTieu.so_tien_hien_tai || 0;
+    const soTienMT = mucTieu.so_tien_muc_tieu || 1;
+    const percent = Math.min((soTienHT / soTienMT) * 100, 100) || 0;
+    const isComplete = soTienHT >= soTienMT;
     const barColor = isComplete ? '#f59e0b' : '#10b981';
 
     return (
@@ -27,61 +28,47 @@ export function MucTieuCard({ mucTieu, onEdit, onDelete, onNapTien }: MucTieuCar
                 opacity: isComplete ? 0.85 : 1,
             }}
         >
-            {/* Header */}
             <div className="flex items-start gap-2 mb-3">
                 <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5">
                         {isComplete && <Trophy className="h-3.5 w-3.5 text-amber-400 flex-shrink-0" />}
-                        <p className="text-sm font-bold truncate" style={{ color: 'var(--foreground)' }}>{mucTieu.ten}</p>
+                        <p className="text-sm font-bold truncate text-foreground">{mucTieu.ten_muc_tieu}</p>
                     </div>
-                    {mucTieu.mo_ta && (
-                        <p className="text-xs mt-0.5 truncate" style={{ color: 'var(--muted-foreground)' }}>{mucTieu.mo_ta}</p>
-                    )}
                 </div>
                 <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
                     <button onClick={() => onEdit(mucTieu)}
-                        className="h-6 w-6 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all"
-                        style={{ color: 'var(--muted-foreground)' }}
+                        className="h-6 w-6 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all text-muted-foreground"
                     >
                         <Pencil className="h-3 w-3" />
                     </button>
                     <button onClick={() => onDelete(mucTieu.id)}
-                        className="h-6 w-6 rounded-lg flex items-center justify-center hover:bg-red-500/20 hover:text-red-400 transition-all"
-                        style={{ color: 'var(--muted-foreground)' }}
+                        className="h-6 w-6 rounded-lg flex items-center justify-center hover:bg-red-500/20 hover:text-red-400 transition-all text-muted-foreground"
                     >
                         <Trash2 className="h-3 w-3" />
                     </button>
                 </div>
             </div>
 
-            {/* Progress */}
             <div className="space-y-2 mb-3">
-                <div className="flex justify-between text-xs">
-                    <span style={{ color: 'var(--muted-foreground)' }}>
-                        {mucTieu.so_tien_hien_tai.toLocaleString('vi-VN')} ₫
+                <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>
+                        {soTienHT.toLocaleString('vi-VN')} ₫
                     </span>
                     <span className="font-black" style={{ color: barColor }}>{percent.toFixed(0)}%</span>
                 </div>
-                <div className="h-2.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                <div className="h-2.5 rounded-full overflow-hidden bg-white/5">
                     <div
                         className="h-full rounded-full transition-all duration-700"
                         style={{ width: `${percent}%`, background: barColor, boxShadow: `0 0 8px ${barColor}60` }}
                     />
                 </div>
                 <div className="flex items-center justify-between">
-                    <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                        Mục tiêu: {mucTieu.so_tien_muc_tieu.toLocaleString('vi-VN')} ₫
+                    <span className="text-xs text-muted-foreground">
+                        Mục tiêu: {Number(mucTieu.so_tien_muc_tieu).toLocaleString('vi-VN')} ₫
                     </span>
-                    {mucTieu.han_chot && (
-                        <div className="flex items-center gap-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                            <Calendar className="h-3 w-3" />
-                            {format(parseISO(mucTieu.han_chot), 'dd/MM/yy')}
-                        </div>
-                    )}
                 </div>
             </div>
 
-            {/* Action */}
             {!isComplete && (
                 <button
                     onClick={() => onNapTien(mucTieu)}

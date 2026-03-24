@@ -1,14 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { mucTieuService } from '@/services/muc-tieu.service';
-import { CreateMucTieuRequest, NapTienRequest, TrangThaiMucTieu } from '@/types';
+import { CreateMucTieuRequest, NapTienRequest } from '@/types';
 
-export function useMucTieu(trangThai?: TrangThaiMucTieu) {
+export function useMucTieu() {
     return useQuery({
-        queryKey: ['muc-tieu', trangThai],
+        queryKey: ['muc-tieu'],
         queryFn: async () => {
             const all = await mucTieuService.getAll();
-            return trangThai ? all.filter(mt => mt.trang_thai === trangThai) : all;
+            return all;
         },
     });
 }

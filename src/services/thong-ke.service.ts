@@ -12,7 +12,7 @@ export const thongKeService = {
             const response: any = await apiClient.get('/thong-ke/tong-quan', {
                 params: { thang, nam },
             });
-            return response.data;
+            return response.data || response;
         } catch (error) {
             console.error('Failed to fetch tong quan:', error);
             throw error;

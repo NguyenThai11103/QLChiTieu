@@ -1,0 +1,282 @@
+﻿.next/types/validator.ts(278,39): error TS2307: Cannot find module '../../src/app/api/auth/login/route.js' or its corresponding type declarations.
+.next/types/validator.ts(287,39): error TS2307: Cannot find module '../../src/app/api/auth/logout/route.js' or its corresponding type declarations.
+.next/types/validator.ts(296,39): error TS2307: Cannot find module '../../src/app/api/auth/me/route.js' or its corresponding type declarations.
+.next/types/validator.ts(305,39): error TS2307: Cannot find module '../../src/app/api/auth/register/route.js' or its corresponding type declarations.
+.next/types/validator.ts(314,39): error TS2307: Cannot find module '../../src/app/api/danh-muc/[id]/route.js' or its corresponding type declarations.
+.next/types/validator.ts(323,39): error TS2307: Cannot find module '../../src/app/api/danh-muc/route.js' or its corresponding type declarations.
+.next/types/validator.ts(332,39): error TS2307: Cannot find module '../../src/app/api/giao-dich/[id]/route.js' or its corresponding type declarations.
+.next/types/validator.ts(341,39): error TS2307: Cannot find module '../../src/app/api/giao-dich/route.js' or its corresponding type declarations.
+.next/types/validator.ts(350,39): error TS2307: Cannot find module '../../src/app/api/muc-tieu/[id]/nap-tien/route.js' or its corresponding type declarations.
+.next/types/validator.ts(359,39): error TS2307: Cannot find module '../../src/app/api/muc-tieu/[id]/route.js' or its corresponding type declarations.
+.next/types/validator.ts(368,39): error TS2307: Cannot find module '../../src/app/api/muc-tieu/route.js' or its corresponding type declarations.
+.next/types/validator.ts(377,39): error TS2307: Cannot find module '../../src/app/api/ngan-sach/[id]/route.js' or its corresponding type declarations.
+.next/types/validator.ts(386,39): error TS2307: Cannot find module '../../src/app/api/ngan-sach/route.js' or its corresponding type declarations.
+.next/types/validator.ts(395,39): error TS2307: Cannot find module '../../src/app/api/nhac-nho/[id]/route.js' or its corresponding type declarations.
+.next/types/validator.ts(404,39): error TS2307: Cannot find module '../../src/app/api/nhac-nho/[id]/toggle/route.js' or its corresponding type declarations.
+.next/types/validator.ts(413,39): error TS2307: Cannot find module '../../src/app/api/nhac-nho/route.js' or its corresponding type declarations.
+.next/types/validator.ts(422,39): error TS2307: Cannot find module '../../src/app/api/thong-ke/bieu-do/route.js' or its corresponding type declarations.
+.next/types/validator.ts(431,39): error TS2307: Cannot find module '../../src/app/api/thong-ke/so-sanh-thang/route.js' or its corresponding type declarations.
+.next/types/validator.ts(440,39): error TS2307: Cannot find module '../../src/app/api/thong-ke/theo-danh-muc/route.js' or its corresponding type declarations.
+.next/types/validator.ts(449,39): error TS2307: Cannot find module '../../src/app/api/thong-ke/tong-quan/route.js' or its corresponding type declarations.
+src/app/(admin)/admin/banners/page.tsx(4,56): error TS2307: Cannot find module '@/hooks/useAdminBanners' or its corresponding type declarations.
+src/app/(admin)/admin/catalog/page.tsx(12,52): error TS2307: Cannot find module '@/hooks/useAdminCatalog' or its corresponding type declarations.
+src/app/(admin)/admin/coupons/page.tsx(4,33): error TS2307: Cannot find module '@/hooks/useAdminCoupons' or its corresponding type declarations.
+src/app/(admin)/admin/notifications/page.tsx(88,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/app/(admin)/admin/notifications/page.tsx(99,51): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/app/(admin)/admin/notifications/page.tsx(151,52): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/app/(admin)/admin/orders/page.tsx(3,32): error TS2307: Cannot find module '@/hooks/useAdminOrders' or its corresponding type declarations.
+src/app/(admin)/admin/orders/page.tsx(239,66): error TS7006: Parameter 'order' implicitly has an 'any' type.
+src/app/(admin)/admin/products/page.tsx(56,26): error TS2307: Cannot find module '@/types/product.types' or its corresponding type declarations.
+src/app/(admin)/admin/products/page.tsx(186,64): error TS7006: Parameter 'child' implicitly has an 'any' type.
+src/app/(admin)/admin/products/page.tsx(283,70): error TS7006: Parameter 'product' implicitly has an 'any' type.
+src/app/(admin)/admin/products/page.tsx(285,82): error TS7006: Parameter 'acc' implicitly has an 'any' type.
+src/app/(admin)/admin/products/page.tsx(285,87): error TS7006: Parameter 'variant' implicitly has an 'any' type.
+src/app/(admin)/admin/profile/page.tsx(57,30): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(admin)/admin/profile/page.tsx(145,50): error TS2339: Property 'anh_dai_dien' does not exist on type 'User'.
+src/app/(admin)/admin/profile/page.tsx(146,28): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(admin)/admin/profile/page.tsx(208,83): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(admin)/admin/reviews/page.tsx(4,33): error TS2307: Cannot find module '@/hooks/useAdminReviews' or its corresponding type declarations.
+src/app/(admin)/admin/roles/page.tsx(4,31): error TS2307: Cannot find module '@/hooks/useAdminRoles' or its corresponding type declarations.
+src/app/(admin)/admin/roles/page.tsx(36,22): error TS2307: Cannot find module '@/types/auth.types' or its corresponding type declarations.
+src/app/(admin)/admin/roles/page.tsx(153,41): error TS7006: Parameter 'role' implicitly has an 'any' type.
+src/app/(admin)/admin/roles/page.tsx(176,82): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/app/(admin)/layout.tsx(29,19): error TS2339: Property 'vai_tro' does not exist on type 'User'.
+src/app/(admin)/layout.tsx(87,44): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(admin)/layout.tsx(92,40): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(app)/bao-cao/page.tsx(47,90): error TS2339: Property 'tang_truong_thu' does not exist on type 'TongQuanTaiChinh'.
+src/app/(app)/bao-cao/page.tsx(48,90): error TS2339: Property 'tang_truong_chi' does not exist on type 'TongQuanTaiChinh'.
+src/app/(app)/bao-cao/page.tsx(87,90): error TS2339: Property 'bieu_tuong' does not exist on type 'DanhMuc'.
+src/app/(app)/bao-cao/page.tsx(90,103): error TS2339: Property 'ten' does not exist on type 'DanhMuc'.
+src/app/(app)/bao-cao/page.tsx(96,120): error TS2339: Property 'mau_sac' does not exist on type 'DanhMuc'.
+src/app/(app)/layout.tsx(70,36): error TS2339: Property 'anh_dai_dien' does not exist on type 'User'.
+src/app/(app)/layout.tsx(71,48): error TS2339: Property 'anh_dai_dien' does not exist on type 'User'.
+src/app/(app)/layout.tsx(76,44): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(app)/layout.tsx(81,44): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/app/(app)/page.tsx(43,38): error TS2339: Property 'tang_truong_thu' does not exist on type 'TongQuanTaiChinh'.
+src/app/(app)/page.tsx(50,38): error TS2339: Property 'tang_truong_chi' does not exist on type 'TongQuanTaiChinh'.
+src/app/(auth)/auth/callback/page.tsx(27,48): error TS2339: Property 'loginWithGoogle' does not exist on type '{ login: (credentials: Record<string, string>) => Promise<User>; register: (data: Record<string, string>) => Promise<User>; logout: () => Promise<...>; getMe: () => Promise<...>; updateProfile: (data: Record<...>) => Promise<...>; changePassword: (data: { ...; }) => Promise<...>; }'.
+src/app/(auth)/login/page.tsx(25,22): error TS2339: Property 'vai_tro' does not exist on type 'User'.
+src/app/verify-email/page.tsx(19,31): error TS2339: Property 'resendVerificationEmail' does not exist on type '{ login: (credentials: Record<string, string>) => Promise<User>; register: (data: Record<string, string>) => Promise<User>; logout: () => Promise<...>; getMe: () => Promise<...>; updateProfile: (data: Record<...>) => Promise<...>; changePassword: (data: { ...; }) => Promise<...>; }'.
+src/components/admin/banners/BannerDeleteDialog.tsx(11,33): error TS2307: Cannot find module '@/hooks/useAdminBanners' or its corresponding type declarations.
+src/components/admin/banners/BannerDialog.tsx(12,50): error TS2307: Cannot find module '@/hooks/useAdminBanners' or its corresponding type declarations.
+src/components/admin/catalog/BrandDialog.tsx(35,48): error TS2307: Cannot find module '@/hooks/useAdminCatalog' or its corresponding type declarations.
+src/components/admin/catalog/BrandTable.tsx(39,32): error TS2307: Cannot find module '@/hooks/useAdminCatalog' or its corresponding type declarations.
+src/components/admin/catalog/CategoryDialog.tsx(33,54): error TS2307: Cannot find module '@/hooks/useAdminCatalog' or its corresponding type declarations.
+src/components/admin/catalog/CategoryTable.tsx(41,35): error TS2307: Cannot find module '@/hooks/useAdminCatalog' or its corresponding type declarations.
+src/components/admin/CouponDialog.tsx(32,50): error TS2307: Cannot find module '@/hooks/useAdminCoupons' or its corresponding type declarations.
+src/components/admin/CouponTable.tsx(24,50): error TS2307: Cannot find module '@/hooks/useAdminCoupons' or its corresponding type declarations.
+src/components/admin/OrderDetailModal.tsx(37,53): error TS2307: Cannot find module '@/hooks/useAdminOrders' or its corresponding type declarations.
+src/components/admin/ProductForm.tsx(29,26): error TS2307: Cannot find module '@/types/product.types' or its corresponding type declarations.
+src/components/admin/ProductForm.tsx(34,25): error TS2307: Cannot find module '@/types/product.types' or its corresponding type declarations.
+src/components/admin/ProductForm.tsx(98,49): error TS7006: Parameter 'bt' implicitly has an 'any' type.
+src/components/admin/ProductForm.tsx(105,49): error TS7006: Parameter 'img' implicitly has an 'any' type.
+src/components/admin/ProductForm.tsx(230,72): error TS7006: Parameter 'child' implicitly has an 'any' type.
+src/components/admin/ReviewTable.tsx(25,51): error TS2307: Cannot find module '@/hooks/useAdminReviews' or its corresponding type declarations.
+src/components/admin/RoleDialog.tsx(16,34): error TS2307: Cannot find module '@/types/auth.types' or its corresponding type declarations.
+src/components/admin/RoleDialog.tsx(17,31): error TS2307: Cannot find module '@/hooks/useAdminRoles' or its corresponding type declarations.
+src/components/admin/RoleDialog.tsx(37,52): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/components/admin/RoleDialog.tsx(83,26): error TS18046: 'perms' is of type 'unknown'.
+src/components/admin/RoleDialog.tsx(83,39): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/components/admin/UserEditDialog.tsx(32,31): error TS2307: Cannot find module '@/hooks/useAdminRoles' or its corresponding type declarations.
+src/components/admin/UserEditDialog.tsx(149,57): error TS7006: Parameter 'role' implicitly has an 'any' type.
+src/components/auth/EmailVerifyBanner.tsx(24,43): error TS2339: Property 'xac_thuc_email_luc' does not exist on type 'User'.
+src/components/auth/EmailVerifyBanner.tsx(31,31): error TS2339: Property 'resendVerificationEmail' does not exist on type '{ login: (credentials: Record<string, string>) => Promise<User>; register: (data: Record<string, string>) => Promise<User>; logout: () => Promise<...>; getMe: () => Promise<...>; updateProfile: (data: Record<...>) => Promise<...>; changePassword: (data: { ...; }) => Promise<...>; }'.
+src/components/brand/BrandsTab.tsx(6,27): error TS2307: Cannot find module '@/services/brand.service' or its corresponding type declarations.
+src/components/brand/BrandsTab.tsx(7,32): error TS2307: Cannot find module '@/services/product.service' or its corresponding type declarations.
+src/components/brand/BrandsTab.tsx(45,38): error TS7006: Parameter 'brand' implicitly has an 'any' type.
+src/components/brand/BrandsTab.tsx(79,30): error TS7006: Parameter 'brand' implicitly has an 'any' type.
+src/components/brand/BrandsTab.tsx(107,60): error TS7006: Parameter 'product' implicitly has an 'any' type.
+src/components/cart/CartDrawer.tsx(3,30): error TS2307: Cannot find module '@/store/cart.store' or its corresponding type declarations.
+src/components/cart/CartDrawer.tsx(16,25): error TS2307: Cannot find module '@/hooks/useCart' or its corresponding type declarations.
+src/components/cart/CartDrawer.tsx(79,46): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/components/checkout/AddAddressModal.tsx(3,28): error TS2307: Cannot find module '@/hooks/useAddress' or its corresponding type declarations.
+src/components/checkout/AddAddressModal.tsx(4,32): error TS2307: Cannot find module '@/types/address.types' or its corresponding type declarations.
+src/components/common/ChatbotWidget.tsx(8,28): error TS2307: Cannot find module '@/hooks/useChatbot' or its corresponding type declarations.
+src/components/common/ChatbotWidget.tsx(93,44): error TS7006: Parameter 'msg' implicitly has an 'any' type.
+src/components/common/ChatbotWidget.tsx(93,49): error TS7006: Parameter 'idx' implicitly has an 'any' type.
+src/components/dashboard/CategoryPieChart.tsx(26,32): error TS2339: Property 'bieu_tuong' does not exist on type 'DanhMuc'.
+src/components/dashboard/CategoryPieChart.tsx(26,60): error TS2339: Property 'ten' does not exist on type 'DanhMuc'.
+src/components/dashboard/CategoryPieChart.tsx(28,30): error TS2339: Property 'mau_sac' does not exist on type 'DanhMuc'.
+src/components/dashboard/RecentTransactions.tsx(41,74): error TS2339: Property 'mau_sac' does not exist on type 'DanhMuc'.
+src/components/dashboard/RecentTransactions.tsx(41,134): error TS2339: Property 'mau_sac' does not exist on type 'DanhMuc'.
+src/components/dashboard/RecentTransactions.tsx(43,51): error TS2339: Property 'bieu_tuong' does not exist on type 'DanhMuc'.
+src/components/dashboard/RecentTransactions.tsx(49,70): error TS2339: Property 'ten' does not exist on type 'DanhMuc'.
+src/components/dashboard/RecentTransactions.tsx(53,65): error TS2339: Property 'ngay_giao_dich' does not exist on type 'GiaoDich'.
+src/components/dashboard/RecentTransactions.tsx(58,133): error TS2339: Property 'ten' does not exist on type 'DanhMuc'.
+src/components/giao-dich/GiaoDichForm.tsx(34,9): error TS2322: Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: unknown; so_tien: unknown; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>' is not assignable to type 'ResolverOptions<{ loai: "thu" | "chi"; id_danh_muc: unknown; so_tien: unknown; noi_dung?: string | undefined; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/giao-dich/GiaoDichForm.tsx(57,47): error TS2345: Argument of type '(data: FormData) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }'.
+      Type 'FieldValues' is missing the following properties from type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }': loai, id_danh_muc, so_tien
+src/components/giao-dich/GiaoDichForm.tsx(59,28): error TS2322: Type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | undefined'.
+      Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+        Type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues> | Promise<ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+              Type 'TFieldValues' is not assignable to type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }'.
+                Type 'FieldValues' is missing the following properties from type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }': loai, id_danh_muc, so_tien
+src/components/giao-dich/GiaoDichForm.tsx(80,28): error TS2322: Type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | undefined'.
+      Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+        Type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues> | Promise<ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+              Type 'TFieldValues' is not assignable to type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }'.
+                Type 'FieldValues' is missing the following properties from type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }': loai, id_danh_muc, so_tien
+src/components/giao-dich/GiaoDichForm.tsx(98,28): error TS2322: Type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | undefined'.
+      Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+        Type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues> | Promise<ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+              Type 'TFieldValues' is not assignable to type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }'.
+                Type 'FieldValues' is missing the following properties from type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }': loai, id_danh_muc, so_tien
+src/components/giao-dich/GiaoDichForm.tsx(109,28): error TS2322: Type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Control<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | undefined'.
+      Type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, TFieldValues>' is not assignable to type 'Resolver<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, any, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+        Type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues> | Promise<ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }, { loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }> | Promise<...>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }>'.
+              Type 'TFieldValues' is not assignable to type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }'.
+                Type 'FieldValues' is missing the following properties from type '{ loai: "thu" | "chi"; id_danh_muc: number; so_tien: number; noi_dung?: string | undefined; }': loai, id_danh_muc, so_tien
+src/components/layout/AppSidebar.tsx(124,32): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/components/layout/AppSidebar.tsx(128,36): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/components/layout/Header.tsx(8,30): error TS2307: Cannot find module '@/store/cart.store' or its corresponding type declarations.
+src/components/layout/Header.tsx(13,31): error TS2307: Cannot find module '@/hooks/useCategory' or its corresponding type declarations.
+src/components/layout/Header.tsx(60,48): error TS2339: Property 'vai_tro' does not exist on type 'User'.
+src/components/layout/Header.tsx(199,60): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/components/layout/Header.tsx(205,119): error TS2551: Property 'ho_va_ten' does not exist on type 'User'. Did you mean 'ho_ten'?
+src/components/layout/Header.tsx(208,52): error TS2339: Property 'vai_tro' does not exist on type 'User'.
+src/components/layout/HeroBanner.tsx(12,31): error TS2307: Cannot find module '@/services/banner.service' or its corresponding type declarations.
+src/components/layout/HeroBanner.tsx(36,31): error TS7006: Parameter 'banner' implicitly has an 'any' type.
+src/components/muc-tieu/MucTieuForm.tsx(29,9): error TS2322: Type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: unknown; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }>' is not assignable to type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }>' is not assignable to type 'ResolverOptions<{ ten_muc_tieu: string; so_tien_muc_tieu: unknown; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/muc-tieu/MucTieuForm.tsx(47,47): error TS2345: Argument of type '(data: FormData) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ ten_muc_tieu: string; so_tien_muc_tieu: number; }'.
+      Type 'FieldValues' is missing the following properties from type '{ ten_muc_tieu: string; so_tien_muc_tieu: number; }': ten_muc_tieu, so_tien_muc_tieu
+src/components/muc-tieu/MucTieuForm.tsx(48,28): error TS2322: Type 'Control<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, TFieldValues>' is not assignable to type 'Control<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }> | undefined'.
+      Type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+        Type 'ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, TFieldValues> | Promise<ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ten_muc_tieu: string; so_tien_muc_tieu: number; }> | Promise<ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ...; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ten_muc_tieu: string; so_tien_muc_tieu: number; }> | Promise<ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ...; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ ten_muc_tieu: string; so_tien_muc_tieu: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ ten_muc_tieu: string; so_tien_muc_tieu: number; }': ten_muc_tieu, so_tien_muc_tieu
+src/components/muc-tieu/MucTieuForm.tsx(56,28): error TS2322: Type 'Control<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, TFieldValues>' is not assignable to type 'Control<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }> | undefined'.
+      Type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, any, { ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+        Type 'ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, TFieldValues> | Promise<ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ten_muc_tieu: string; so_tien_muc_tieu: number; }> | Promise<ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ...; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ten_muc_tieu: string; so_tien_muc_tieu: number; }> | Promise<ResolverResult<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }, { ...; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ ten_muc_tieu: string; so_tien_muc_tieu: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ ten_muc_tieu: string; so_tien_muc_tieu: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ ten_muc_tieu: string; so_tien_muc_tieu: number; }': ten_muc_tieu, so_tien_muc_tieu
+src/components/muc-tieu/NapTienDialog.tsx(30,9): error TS2322: Type 'Resolver<{ so_tien: unknown; }, any, { so_tien: number; }>' is not assignable to type 'Resolver<{ so_tien: number; }, any, { so_tien: number; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ so_tien: number; }>' is not assignable to type 'ResolverOptions<{ so_tien: unknown; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/muc-tieu/NapTienDialog.tsx(64,55): error TS2345: Argument of type '(data: FormData) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ so_tien: number; }'.
+      Property 'so_tien' is missing in type 'FieldValues' but required in type '{ so_tien: number; }'.
+src/components/muc-tieu/NapTienDialog.tsx(65,36): error TS2322: Type 'Control<{ so_tien: number; }, any, TFieldValues>' is not assignable to type 'Control<{ so_tien: number; }, any, { so_tien: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ so_tien: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ so_tien: number; }, any, { so_tien: number; }> | undefined'.
+      Type 'Resolver<{ so_tien: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ so_tien: number; }, any, { so_tien: number; }>'.
+        Type 'ResolverResult<{ so_tien: number; }, TFieldValues> | Promise<ResolverResult<{ so_tien: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ so_tien: number; }, { so_tien: number; }> | Promise<ResolverResult<{ so_tien: number; }, { so_tien: number; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ so_tien: number; }, { so_tien: number; }> | Promise<ResolverResult<{ so_tien: number; }, { so_tien: number; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ so_tien: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ so_tien: number; }'.
+                Property 'so_tien' is missing in type 'FieldValues' but required in type '{ so_tien: number; }'.
+src/components/ngan-sach/NganSachForm.tsx(36,9): error TS2322: Type 'Resolver<{ id_danh_muc: unknown; so_tien_ngan_sach: unknown; thang: unknown; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>' is not assignable to type 'ResolverOptions<{ id_danh_muc: unknown; so_tien_ngan_sach: unknown; thang: unknown; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/ngan-sach/NganSachForm.tsx(55,47): error TS2345: Argument of type '(data: FormData) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }'.
+      Type 'FieldValues' is missing the following properties from type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }': id_danh_muc, so_tien_ngan_sach, thang
+src/components/ngan-sach/NganSachForm.tsx(56,28): error TS2322: Type 'Control<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues>' is not assignable to type 'Control<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | undefined'.
+      Type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+        Type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, TFieldValues> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { ...; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { ...; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }': id_danh_muc, so_tien_ngan_sach, thang
+src/components/ngan-sach/NganSachForm.tsx(71,28): error TS2322: Type 'Control<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues>' is not assignable to type 'Control<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | undefined'.
+      Type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+        Type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, TFieldValues> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { ...; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { ...; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }': id_danh_muc, so_tien_ngan_sach, thang
+src/components/ngan-sach/NganSachForm.tsx(79,28): error TS2322: Type 'Control<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues>' is not assignable to type 'Control<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | undefined'.
+      Type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, any, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+        Type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, TFieldValues> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { ...; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }> | Promise<ResolverResult<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }, { ...; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ id_danh_muc: number; so_tien_ngan_sach: number; thang: number; }': id_danh_muc, so_tien_ngan_sach, thang
+src/components/nhac-nho/NhacNhoForm.tsx(29,9): error TS2322: Type 'Resolver<{ tieu_de: string; so_tien: unknown; }, any, { tieu_de: string; so_tien: number; }>' is not assignable to type 'Resolver<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ tieu_de: string; so_tien: number; }>' is not assignable to type 'ResolverOptions<{ tieu_de: string; so_tien: unknown; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/nhac-nho/NhacNhoForm.tsx(47,47): error TS2345: Argument of type '(data: FormData) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ tieu_de: string; so_tien: number; }'.
+      Type 'FieldValues' is missing the following properties from type '{ tieu_de: string; so_tien: number; }': tieu_de, so_tien
+src/components/nhac-nho/NhacNhoForm.tsx(48,28): error TS2322: Type 'Control<{ tieu_de: string; so_tien: number; }, any, TFieldValues>' is not assignable to type 'Control<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ tieu_de: string; so_tien: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }> | undefined'.
+      Type 'Resolver<{ tieu_de: string; so_tien: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }>'.
+        Type 'ResolverResult<{ tieu_de: string; so_tien: number; }, TFieldValues> | Promise<ResolverResult<{ tieu_de: string; so_tien: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }> | Promise<ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }> | Promise<ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ tieu_de: string; so_tien: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ tieu_de: string; so_tien: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ tieu_de: string; so_tien: number; }': tieu_de, so_tien
+src/components/nhac-nho/NhacNhoForm.tsx(56,28): error TS2322: Type 'Control<{ tieu_de: string; so_tien: number; }, any, TFieldValues>' is not assignable to type 'Control<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }>'.
+  The types of '_options.resolver' are incompatible between these types.
+    Type 'Resolver<{ tieu_de: string; so_tien: number; }, any, TFieldValues> | undefined' is not assignable to type 'Resolver<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }> | undefined'.
+      Type 'Resolver<{ tieu_de: string; so_tien: number; }, any, TFieldValues>' is not assignable to type 'Resolver<{ tieu_de: string; so_tien: number; }, any, { tieu_de: string; so_tien: number; }>'.
+        Type 'ResolverResult<{ tieu_de: string; so_tien: number; }, TFieldValues> | Promise<ResolverResult<{ tieu_de: string; so_tien: number; }, TFieldValues>>' is not assignable to type 'ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }> | Promise<ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }>>'.
+          Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }> | Promise<ResolverResult<{ tieu_de: string; so_tien: number; }, { tieu_de: string; so_tien: number; }>>'.
+            Type 'ResolverSuccess<TFieldValues>' is not assignable to type 'ResolverSuccess<{ tieu_de: string; so_tien: number; }>'.
+              Type 'TFieldValues' is not assignable to type '{ tieu_de: string; so_tien: number; }'.
+                Type 'FieldValues' is missing the following properties from type '{ tieu_de: string; so_tien: number; }': tieu_de, so_tien
+src/components/notifications/NotificationCenter.tsx(32,46): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/components/notifications/NotificationCenter.tsx(87,49): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/components/product/ProductCard.tsx(6,29): error TS2307: Cannot find module '@/hooks/useWishlist' or its corresponding type declarations.
+src/components/product/ProductCard.tsx(11,25): error TS2307: Cannot find module '@/types/product.types' or its corresponding type declarations.
+src/components/product/ProductCard.tsx(20,36): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/components/product/ProductCard.tsx(38,45): error TS7006: Parameter 'img' implicitly has an 'any' type.
+src/components/product/ProductReviews.tsx(6,33): error TS2307: Cannot find module '@/types/product.types' or its corresponding type declarations.
+src/components/product/ReviewModal.tsx(28,31): error TS2307: Cannot find module '@/services/review.service' or its corresponding type declarations.
+src/components/profile/AddressFormDialog.tsx(3,28): error TS2307: Cannot find module '@/hooks/useAddress' or its corresponding type declarations.
+src/components/profile/AddressFormDialog.tsx(4,41): error TS2307: Cannot find module '@/types/address.types' or its corresponding type declarations.
+src/components/recommendation/RecommendationSection.tsx(5,39): error TS2307: Cannot find module '@/services/recommendation.service' or its corresponding type declarations.
+src/components/recommendation/RecommendationSection.tsx(48,55): error TS7006: Parameter 'product' implicitly has an 'any' type.
+src/hooks/useGiaoDich.ts(4,33): error TS2305: Module '"@/types"' has no exported member 'GetGiaoDichParams'.
+src/hooks/useMucTieu.ts(4,48): error TS2305: Module '"@/types"' has no exported member 'TrangThaiMucTieu'.
+src/hooks/useMucTieu.ts(11,52): error TS2339: Property 'trang_thai' does not exist on type 'MucTieuTietKiem'.
+src/hooks/useNotifications.ts(2,37): error TS2307: Cannot find module '@/services/notification.service' or its corresponding type declarations.
+src/services/admin.service.ts(2,48): error TS2307: Cannot find module '@/types/api.types' or its corresponding type declarations.
+src/services/admin.service.ts(3,25): error TS2307: Cannot find module '@/types/product.types' or its corresponding type declarations.
+src/services/giao-dich.service.ts(5,5): error TS2305: Module '"@/types"' has no exported member 'GetGiaoDichParams'.

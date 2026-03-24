@@ -38,24 +38,24 @@ export function RecentTransactions({ transactions }: RecentTransactionsProps) {
                             >
                                 {/* Icon */}
                                 <div className="h-10 w-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                                    style={{ background: `${gd.danh_muc?.mau_sac || '#10b981'}18`, border: `1px solid ${gd.danh_muc?.mau_sac || '#10b981'}25` }}
+                                    style={{ background: `${'#10b981'}18`, border: `1px solid ${'#10b981'}25` }}
                                 >
-                                    {gd.danh_muc?.bieu_tuong || (isIncome ? '📈' : '📉')}
+                                    {isIncome ? '📈' : '📉'}
                                 </div>
 
                                 {/* Info */}
                                 <div className="flex-1 min-w-0">
                                     <p className="text-sm font-medium truncate" style={{ color: 'var(--foreground)' }}>
-                                        {gd.noi_dung || gd.danh_muc?.ten || 'Giao dịch'}
+                                        {gd.noi_dung || gd.danh_muc?.ten_danh_muc || 'Giao dịch'}
                                     </p>
                                     <div className="flex items-center gap-2 mt-0.5">
                                         <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                                            {format(parseISO(gd.ngay_giao_dich), 'dd/MM/yyyy')}
+                                            {format(parseISO(gd.created_at || new Date().toISOString()), 'dd/MM/yyyy')}
                                         </span>
                                         {gd.danh_muc && (
                                             <>
                                                 <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
-                                                <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>{gd.danh_muc.ten}</span>
+                                                <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>{gd.danh_muc.ten_danh_muc}</span>
                                             </>
                                         )}
                                     </div>
@@ -64,7 +64,7 @@ export function RecentTransactions({ transactions }: RecentTransactionsProps) {
                                 {/* Amount */}
                                 <div className="text-right flex-shrink-0">
                                     <p className="text-sm font-black" style={{ color: isIncome ? '#10b981' : '#ef4444' }}>
-                                        {isIncome ? '+' : '-'}{gd.so_tien.toLocaleString('vi-VN')} ₫
+                                        {isIncome ? '+' : '-'}{Number(gd.so_tien).toLocaleString('vi-VN')} ₫
                                     </p>
                                     <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full"
                                         style={{ background: isIncome ? 'rgba(16,185,129,0.12)' : 'rgba(239,68,68,0.1)', color: isIncome ? '#10b981' : '#ef4444' }}

@@ -33,16 +33,17 @@ export function GiaoDichList({ items, isLoading, onEdit, onDelete }: GiaoDichLis
 
     // Group by date
     const grouped = items.reduce((acc, gd) => {
-        const date = gd.ngay_giao_dich;
-        if (!acc[date]) acc[date] = [];
-        acc[date].push(gd);
+        // Fallback to today if created_at is missing (should not happen)
+        const dateStr = gd.created_at ? gd.created_at.split('T')[0] : format(new Date(), 'yyyy-MM-dd');
+        if (!acc[dateStr]) acc[dateStr] = [];
+        acc[dateStr].push(gd);
         return acc;
     }, {} as Record<string, GiaoDich[]>);
 
     return (
         <div className="space-y-6">
             {Object.entries(grouped).sort(([a], [b]) => b.localeCompare(a)).map(([date, gds]) => {
-                const dailyNet = gds.reduce((s, gd) => gd.loai === 'thu' ? s + gd.so_tien : s - gd.so_tien, 0);
+                const dailyNet = gds.reduce((s, gd) => gd.loai === 'thu' ? s + Number(gd.so_tien) : s - Number(gd.so_tien), 0);
                 return (
                     <div key={date}>
                         {/* Date header */}
@@ -62,37 +63,32 @@ export function GiaoDichList({ items, isLoading, onEdit, onDelete }: GiaoDichLis
                         <div className="space-y-1.5">
                             {gds.map(gd => {
                                 const isIncome = gd.loai === 'thu';
-                                const color = gd.danh_muc?.mau_sac || (isIncome ? '#10b981' : '#ef4444');
+                                const color = isIncome ? '#10b981' : '#ef4444';
+                                const tenDM = (gd as any).ten_danh_muc || gd.danh_muc?.ten_danh_muc || 'Giao dịch';
                                 return (
                                     <div key={gd.id}
                                         className="flex items-center gap-3 px-4 py-3 rounded-2xl group transition-all hover:bg-white/5 cursor-default"
                                         style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.05)' }}
                                     >
-                                        {/* Category icon */}
                                         <div className="h-10 w-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
                                             style={{ background: `${color}18`, border: `1px solid ${color}25` }}
                                         >
-                                            {gd.danh_muc?.bieu_tuong || '💰'}
+                                            {tenDM.charAt(0).toUpperCase()}
                                         </div>
 
-                                        {/* Info */}
                                         <div className="flex-1 min-w-0">
                                             <p className="text-sm font-semibold truncate" style={{ color: 'var(--foreground)' }}>
-                                                {gd.noi_dung || gd.danh_muc?.ten || 'Giao dịch'}
+                                                {gd.noi_dung || tenDM}
                                             </p>
-                                            {gd.danh_muc && (
-                                                <p className="text-xs mt-0.5" style={{ color: 'var(--muted-foreground)' }}>{gd.danh_muc.ten}</p>
-                                            )}
+                                            <p className="text-xs mt-0.5" style={{ color: 'var(--muted-foreground)' }}>{tenDM}</p>
                                         </div>
 
-                                        {/* Amount */}
                                         <div className="text-right mr-2 flex-shrink-0">
                                             <p className="text-sm font-black" style={{ color: isIncome ? '#10b981' : '#ef4444' }}>
-                                                {isIncome ? '+' : '-'}{gd.so_tien.toLocaleString('vi-VN')} ₫
+                                                {isIncome ? '+' : '-'}{Number(gd.so_tien).toLocaleString('vi-VN')} ₫
                                             </p>
                                         </div>
 
-                                        {/* Actions (hover) */}
                                         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
                                             <button
                                                 onClick={() => onEdit(gd)}

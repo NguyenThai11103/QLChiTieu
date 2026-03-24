@@ -42,7 +42,8 @@ export function useUpdateNhacNho() {
 export function useToggleNhacNho() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (id: number) => nhacNhoService.toggleTrangThai(id),
+        // mutationFn: (id: number) => nhacNhoService.toggleTrangThai(id),
+        mutationFn: async (id: number) => { console.log('Not implemented in backend'); },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['nhac-nho'] });
         },

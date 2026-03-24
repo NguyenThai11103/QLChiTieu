@@ -26,10 +26,7 @@ export default function AdminLayout({
             return;
         }
 
-        if (user?.vai_tro !== "quan_tri") {
-            router.push("/");
-            return;
-        }
+        // Remove role check
 
         setIsAuthorized(true);
     }, [isAuthenticated, user, router]);
@@ -84,12 +81,12 @@ export default function AdminLayout({
                         <div className="flex items-center gap-3 pl-2 group cursor-pointer">
                             <div className="flex flex-col items-end hidden md:flex">
                                 <span className="text-sm font-bold text-slate-700 leading-none group-hover:text-primary transition-colors">
-                                    {user?.ho_va_ten}
+                                    {user?.ho_ten}
                                 </span>
                                 <span className="text-[10px] text-slate-400 font-medium uppercase tracking-wider">Administrator</span>
                             </div>
                             <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary to-primary/80 text-white flex items-center justify-center text-sm font-black shadow-lg shadow-primary/20 ring-2 ring-white">
-                                {user?.ho_va_ten?.charAt(0) || 'A'}
+                                {user?.ho_ten?.charAt(0) || 'A'}
                             </div>
                         </div>
                     </div>

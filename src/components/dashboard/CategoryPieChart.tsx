@@ -16,18 +16,22 @@ const CustomTooltip = ({ active, payload }: any) => {
             style={{ background: 'rgba(18,22,42,0.95)', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(12px)' }}
         >
             <p className="font-bold mb-1" style={{ color: d.payload.color }}>{d.name}</p>
-            <p style={{ color: 'var(--muted-foreground)' }}>{d.value.toLocaleString('vi-VN')} ₫</p>
+            <p style={{ color: 'var(--muted-foreground)' }}>{Number(d.value).toLocaleString('vi-VN')} ₫</p>
         </div>
     );
 };
 
 export function CategoryPieChart({ data, loading }: CategoryPieChartProps) {
-    const chartData = data.map(item => ({
-        name: `${item.danh_muc.bieu_tuong} ${item.danh_muc.ten}`,
-        value: item.tong_tien,
-        color: item.danh_muc.mau_sac,
-        percent: item.ty_le_phan_tram,
-    }));
+    const chartData = data.map((item, index) => {
+        // Fallback colors for categories since dbml doesn't have mau_sac
+        const colors = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+        return {
+            name: `🏷️ ${item.danh_muc.ten_danh_muc}`,
+            value: item.tong_tien,
+            color: colors[index % colors.length],
+            percent: item.ty_le_phan_tram,
+        };
+    });
 
     return (
         <div className="rounded-2xl p-5 h-full" style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.06)', boxShadow: '0 4px 24px rgba(0,0,0,0.2)' }}>

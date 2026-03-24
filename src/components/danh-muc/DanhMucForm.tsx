@@ -10,13 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useCreateDanhMuc, useUpdateDanhMuc } from "@/hooks/useDanhMuc";
 import { DanhMuc, LoaiDanhMuc } from "@/types";
 
-const PRESET_EMOJIS = ['🍔', '🛒', '🏠', '🚌', '💊', '📚', '🎮', '✈️', '🎁', '💰', '📈', '🏋️', '☕', '🎬', '💡'];
-const PRESET_COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#ec4899', '#f97316', '#84cc16', '#64748b'];
-
 const schema = z.object({
-    ten: z.string().min(1, 'Tên danh mục không được để trống'),
-    bieu_tuong: z.string().min(1, 'Chọn biểu tượng'),
-    mau_sac: z.string().min(1, 'Chọn màu sắc'),
+    ten_danh_muc: z.string().min(1, 'Tên danh mục không được để trống'),
     loai: z.enum(['thu', 'chi']),
 });
 
@@ -34,15 +29,10 @@ export function DanhMucForm({ editItem, onSuccess }: DanhMucFormProps) {
     const form = useForm<FormData>({
         resolver: zodResolver(schema),
         defaultValues: {
-            ten: editItem?.ten ?? '',
-            bieu_tuong: editItem?.bieu_tuong ?? '💰',
-            mau_sac: editItem?.mau_sac ?? '#3b82f6',
+            ten_danh_muc: editItem?.ten_danh_muc ?? '',
             loai: (editItem?.loai as LoaiDanhMuc) ?? 'chi',
         },
     });
-
-    const selectedEmoji = form.watch('bieu_tuong');
-    const selectedColor = form.watch('mau_sac');
 
     const onSubmit = async (data: FormData) => {
         if (editItem) {
@@ -70,47 +60,10 @@ export function DanhMucForm({ editItem, onSuccess }: DanhMucFormProps) {
                     </FormItem>
                 )} />
 
-                <FormField control={form.control} name="ten" render={({ field }) => (
+                <FormField control={form.control} name="ten_danh_muc" render={({ field }) => (
                     <FormItem>
                         <FormLabel>Tên danh mục</FormLabel>
                         <FormControl><Input placeholder="Ví dụ: Ăn uống" {...field} /></FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )} />
-
-                <FormField control={form.control} name="bieu_tuong" render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Biểu tượng</FormLabel>
-                        <div className="flex flex-wrap gap-2">
-                            {PRESET_EMOJIS.map(emoji => (
-                                <button
-                                    key={emoji}
-                                    type="button"
-                                    onClick={() => field.onChange(emoji)}
-                                    className={`h-9 w-9 rounded-lg text-lg flex items-center justify-center border-2 transition-all ${selectedEmoji === emoji ? 'border-primary bg-primary/10 scale-110' : 'border-border hover:border-muted-foreground'}`}
-                                >
-                                    {emoji}
-                                </button>
-                            ))}
-                        </div>
-                        <FormMessage />
-                    </FormItem>
-                )} />
-
-                <FormField control={form.control} name="mau_sac" render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Màu sắc</FormLabel>
-                        <div className="flex flex-wrap gap-2">
-                            {PRESET_COLORS.map(color => (
-                                <button
-                                    key={color}
-                                    type="button"
-                                    onClick={() => field.onChange(color)}
-                                    className={`h-7 w-7 rounded-full border-2 transition-all ${selectedColor === color ? 'border-foreground scale-125' : 'border-transparent'}`}
-                                    style={{ backgroundColor: color }}
-                                />
-                            ))}
-                        </div>
                         <FormMessage />
                     </FormItem>
                 )} />

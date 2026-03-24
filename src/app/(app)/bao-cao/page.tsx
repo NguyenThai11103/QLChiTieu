@@ -44,8 +44,8 @@ export default function BaoCaoPage() {
 
             {/* Summary */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <SummaryCard title="Tổng Thu" value={tongQuan.tong_thu} growth={tongQuan.tang_truong_thu} icon={<TrendingUp className="h-5 w-5" />} variant="income" />
-                <SummaryCard title="Tổng Chi" value={tongQuan.tong_chi} growth={tongQuan.tang_truong_chi} icon={<TrendingDown className="h-5 w-5" />} variant="expense" />
+                <SummaryCard title="Tổng Thu" value={tongQuan.tong_thu} growth={0} icon={<TrendingUp className="h-5 w-5" />} variant="income" />
+                <SummaryCard title="Tổng Chi" value={tongQuan.tong_chi} growth={0} icon={<TrendingDown className="h-5 w-5" />} variant="expense" />
                 <SummaryCard title="Số Dư"    value={tongQuan.so_du}                                       icon={<Wallet className="h-5 w-5" />}        variant="balance" />
             </div>
 
@@ -82,24 +82,26 @@ export default function BaoCaoPage() {
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-3">
-                        {theoDanhMuc.map(item => (
+                        {theoDanhMuc.map((item, i) => {
+                            const colors = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+                            return (
                             <div key={item.danh_muc.id} className="flex items-center gap-3">
-                                <span className="text-xl w-7 text-center">{item.danh_muc.bieu_tuong}</span>
+                                <span className="text-xl w-7 text-center">🏷️</span>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between mb-1">
-                                        <span className="text-sm font-medium truncate">{item.danh_muc.ten}</span>
-                                        <span className="text-sm font-semibold ml-2">{item.tong_tien.toLocaleString('vi-VN')} ₫</span>
+                                        <span className="text-sm font-medium truncate">{item.danh_muc.ten_danh_muc}</span>
+                                        <span className="text-sm font-semibold ml-2">{Number(item.tong_tien).toLocaleString('vi-VN')} ₫</span>
                                     </div>
                                     <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                                         <div
                                             className="h-full rounded-full transition-all"
-                                            style={{ width: `${item.ty_le_phan_tram}%`, backgroundColor: item.danh_muc.mau_sac }}
+                                            style={{ width: `${item.ty_le_phan_tram}%`, backgroundColor: colors[i % colors.length] }}
                                         />
                                     </div>
                                 </div>
                                 <span className="text-xs text-muted-foreground w-10 text-right">{item.ty_le_phan_tram.toFixed(0)}%</span>
                             </div>
-                        ))}
+                        )})}
                     </div>
                 </CardContent>
             </Card>

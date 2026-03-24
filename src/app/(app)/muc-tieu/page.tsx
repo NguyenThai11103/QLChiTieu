@@ -19,8 +19,8 @@ export default function MucTieuPage() {
     const { data: items = [], isLoading } = useMucTieu();
     const deleteMT = useDeleteMucTieu();
 
-    const dangThucHien = items.filter(mt => mt.trang_thai === 'dang_thuc_hien');
-    const hoanThanh = items.filter(mt => mt.trang_thai === 'hoan_thanh');
+    const dangThucHien = items.filter(mt => (mt.so_tien_hien_tai || 0) < (mt.so_tien_muc_tieu || 1));
+    const hoanThanh = items.filter(mt => (mt.so_tien_hien_tai || 0) >= (mt.so_tien_muc_tieu || 1));
 
     const handleEdit = (mt: MucTieuTietKiem) => {
         setEditItem(mt);

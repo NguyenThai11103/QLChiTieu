@@ -33,11 +33,16 @@ apiClient.interceptors.response.use(
         toast.error(error.response?.data?.message || 'Không có quyền thực hiện hành động này');
       }
     }
-    const formatted = error.response?.data || {
-      success: false,
-      message: error.message || 'Có lỗi xảy ra',
-    };
-    if (error.response) formatted.status = error.response.status;
+    let formatted = error.response?.data;
+    if (typeof formatted !== 'object' || formatted === null) {
+      formatted = {
+        success: false,
+        message: error.message || 'Lỗi kết nối Backend (Server trả về HTML string)',
+      };
+    }
+    if (error.response) {
+      formatted.status = error.response.status;
+    }
     return Promise.reject(formatted);
   }
 );

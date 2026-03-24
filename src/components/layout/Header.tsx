@@ -13,7 +13,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription, SheetC
 import { useCategories } from '@/hooks/useCategory';
 import { NotificationCenter } from '@/components/notifications/NotificationCenter';
 
-export function Header() {
+export function Header() {  
     const { itemCount, openCart } = useCartStore();
     const { isAuthenticated, user, logout } = useAuthStore();
     const [isMounted, setIsMounted] = useState(false);
@@ -57,7 +57,7 @@ export function Header() {
                                             </Link>
                                         </SheetClose>
 
-                                        {user?.vai_tro === 'quan_tri' && (
+                                        {(user as any)?.vai_tro === 'quan_tri' && (
                                             <SheetClose asChild>
                                                 <Link href="/admin" className="px-6 py-3 text-base font-bold text-primary border-b hover:bg-slate-50 transition-colors">
                                                     Quản trị hệ thống
@@ -196,16 +196,16 @@ export function Header() {
                                         <DropdownMenuTrigger asChild>
                                             <Button variant="ghost" className="relative h-8 w-8 rounded-full border border-slate-200">
                                                 <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-primary">
-                                                    {user?.ho_va_ten?.charAt(0) || 'U'}
+                                                    {user?.ho_ten?.charAt(0) || 'U'}
                                                 </div>
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent className="w-56 mt-2" align="end" forceMount>
                                             <div className="flex flex-col space-y-1 p-2 border-b border-slate-100 mb-1">
-                                                <p className="text-sm font-medium leading-none text-slate-800">{user?.ho_va_ten}</p>
+                                                <p className="text-sm font-medium leading-none text-slate-800">{user?.ho_ten}</p>
                                                 <p className="text-xs leading-none text-slate-500">{user?.email}</p>
                                             </div>
-                                            {user?.vai_tro === 'quan_tri' ? (
+                                            {(user as any)?.vai_tro === 'quan_tri' ? (
                                                 <>
                                                     <DropdownMenuItem asChild className="cursor-pointer py-2 text-primary font-semibold">
                                                         <Link href="/admin" className="flex items-center w-full">

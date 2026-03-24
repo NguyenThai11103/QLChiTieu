@@ -20,7 +20,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
                 <div key={entry.name} className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full" style={{ background: entry.color }} />
                     <span style={{ color: 'var(--muted-foreground)' }}>{entry.name}:</span>
-                    <span className="font-bold" style={{ color: entry.color }}>{entry.value.toLocaleString('vi-VN')} ₫</span>
+                    <span className="font-bold" style={{ color: entry.color }}>{Number(entry.value).toLocaleString('vi-VN')} ₫</span>
                 </div>
             ))}
         </div>

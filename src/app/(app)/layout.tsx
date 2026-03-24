@@ -67,18 +67,18 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                         <div className="h-8 w-px mx-1" style={{ background: 'rgba(255,255,255,0.08)' }} />
 
                         <Link href="/ho-so" className="flex items-center gap-2.5 px-2 py-1.5 rounded-xl transition-all hover:bg-white/5">
-                            {user?.anh_dai_dien ? (
-                                <img src={user.anh_dai_dien} alt="avatar" className="h-8 w-8 rounded-full object-cover" />
+                            {user?.avatar ? (
+                                <img src={user.avatar} alt="avatar" className="h-8 w-8 rounded-full object-cover" />
                             ) : (
                                 <div className="h-8 w-8 rounded-full flex items-center justify-center text-sm font-bold"
                                     style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white' }}
                                 >
-                                    {user?.ho_va_ten?.charAt(0) || <UserIcon className="h-4 w-4" />}
+                                    {user?.ho_ten?.charAt(0) || <UserIcon className="h-4 w-4" />}
                                 </div>
                             )}
                             <div className="hidden sm:block">
                                 <p className="text-xs font-semibold leading-none" style={{ color: 'var(--foreground)' }}>
-                                    {user?.ho_va_ten || 'Demo User'}
+                                    {user?.ho_ten || 'Demo User'}
                                 </p>
                                 <p className="text-xs mt-0.5" style={{ color: 'var(--muted-foreground)' }}>
                                     {user?.email || 'demo@example.com'}

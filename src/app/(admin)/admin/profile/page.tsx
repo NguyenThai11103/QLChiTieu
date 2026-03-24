@@ -27,7 +27,7 @@ import {
 } from 'lucide-react';
 
 interface ProfileForm {
-    ho_va_ten: string;
+    ho_ten: string;
     so_dien_thoai: string;
     mat_khau_cu?: string;
     mat_khau_moi?: string;
@@ -54,7 +54,7 @@ export default function AdminProfilePage() {
         formState: { errors, isDirty },
     } = useForm<ProfileForm>({
         defaultValues: {
-            ho_va_ten: user?.ho_va_ten || '',
+            ho_ten: user?.ho_ten || '',
             so_dien_thoai: user?.so_dien_thoai || '',
             mat_khau_cu: '',
             mat_khau_moi: '',
@@ -68,7 +68,7 @@ export default function AdminProfilePage() {
                 const refreshed = await authService.getMe();
                 updateUser(refreshed);
                 reset({
-                    ho_va_ten: refreshed.ho_va_ten,
+                    ho_ten: refreshed.ho_ten,
                     so_dien_thoai: refreshed.so_dien_thoai || '',
                     mat_khau_cu: '',
                     mat_khau_moi: '',
@@ -98,7 +98,7 @@ export default function AdminProfilePage() {
             const url = res?.data?.url;
             if (!url) throw new Error('Không nhận được URL ảnh');
 
-            const updated = await authService.updateProfile({ anh_dai_dien: url });
+            const updated = await authService.updateProfile({ avatar: url });
             updateUser(updated);
             toast.success('Cập nhật ảnh đại diện thành công!');
         } catch (err: any) {
@@ -114,7 +114,7 @@ export default function AdminProfilePage() {
         setIsLoading(true);
         try {
             const payload: Record<string, string> = {
-                ho_va_ten: data.ho_va_ten,
+                ho_ten: data.ho_ten,
                 so_dien_thoai: data.so_dien_thoai,
             };
 
@@ -142,8 +142,8 @@ export default function AdminProfilePage() {
         }
     };
 
-    const currentAvatar = avatarPreview || user?.anh_dai_dien;
-    const initials = user?.ho_va_ten?.split(' ').slice(-2).map((w: string) => w[0]).join('').toUpperCase() || 'A';
+    const currentAvatar = avatarPreview || user?.avatar;
+    const initials = user?.ho_ten?.split(' ').slice(-2).map((w: string) => w[0]).join('').toUpperCase() || 'A';
 
     return (
         <div className="space-y-6 max-w-4xl">
@@ -205,7 +205,7 @@ export default function AdminProfilePage() {
                     {/* Info */}
                     <div className="flex-1 text-center sm:text-left">
                         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 flex-wrap">
-                            <h2 className="text-2xl font-black text-white">{user?.ho_va_ten}</h2>
+                            <h2 className="text-2xl font-black text-white">{user?.ho_ten}</h2>
                             <Badge className="bg-white/20 text-white border-white/30 border font-bold text-xs shrink-0 backdrop-blur-sm">
                                 <ShieldCheck className="h-3 w-3 mr-1" />
                                 Quản trị viên
@@ -244,16 +244,16 @@ export default function AdminProfilePage() {
 
                         <div className="grid grid-cols-1 gap-4">
                             <div className="space-y-1.5">
-                                <label htmlFor="ho_va_ten" className="text-xs font-bold text-slate-500 uppercase tracking-wide flex items-center gap-1.5">
+                                <label htmlFor="ho_ten" className="text-xs font-bold text-slate-500 uppercase tracking-wide flex items-center gap-1.5">
                                     <User className="h-3.5 w-3.5" /> Họ và Tên <span className="text-red-500">*</span>
                                 </label>
                                 <Input
-                                    id="ho_va_ten"
+                                    id="ho_ten"
                                     placeholder="Nhập họ và tên..."
                                     className="h-11"
-                                    {...register('ho_va_ten', { required: 'Vui lòng nhập họ và tên' })}
+                                    {...register('ho_ten', { required: 'Vui lòng nhập họ và tên' })}
                                 />
-                                {errors.ho_va_ten && <p className="text-xs text-red-500">{errors.ho_va_ten.message}</p>}
+                                {errors.ho_ten && <p className="text-xs text-red-500">{errors.ho_ten.message}</p>}
                             </div>
 
                             <div className="space-y-1.5">

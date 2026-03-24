@@ -76,7 +76,7 @@ export function SummaryCard({ title, value, growth, icon, variant, loading }: Su
             </div>
 
             <p className="text-2xl font-black tracking-tight" style={{ color: cfg.value }}>
-                {value.toLocaleString('vi-VN')}
+                {Number(value).toLocaleString('vi-VN')}
                 <span className="text-base font-semibold ml-1 opacity-70"> ₫</span>
             </p>
 

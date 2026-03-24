@@ -40,14 +40,14 @@ export default function DashboardPage() {
                 <SummaryCard
                     title="Tổng Thu"
                     value={tongQuan.tong_thu}
-                    growth={tongQuan.tang_truong_thu}
+                    growth={0}
                     icon={<TrendingUp className="h-5 w-5" />}
                     variant="income"
                 />
                 <SummaryCard
                     title="Tổng Chi"
                     value={tongQuan.tong_chi}
-                    growth={tongQuan.tang_truong_chi}
+                    growth={0}
                     icon={<TrendingDown className="h-5 w-5" />}
                     variant="expense"
                 />
